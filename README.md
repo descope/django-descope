@@ -35,7 +35,24 @@ This plugin integrates Descope with your Django app.
 
 1. Visit http://127.0.0.1:8000/tokens to see the user tokens after login
 
+## Settings
+
+The following settings are available to configure in your project `settings.py`
+
+```
+DESCOPE_PROJECT_ID **Required**
+DESCOPE_REQUIRE_SIGNUP - Set this to true to create user on first login
+DESCOPE_LOGIN_SENT_REDIRECT
+DESCOPE_LOGIN_SUCCESS_REDIRECT
+DESCOPE_LOGIN_TEMPLATE_NAME
+DESCOPE_LOGIN_SENT_TEMPLATE_NAME
+DESCOPE_LOGIN_FAILED_TEMPLATE_NAME
+DESCOPE_SIGNUP_TEMPLATE_NAME
+```
+
 ### TODO:
 
 - [ ] Get user details (name?) from jwt
 - [ ] Get user permissions from claims
+- [ ] Add additional authentication methods
+- [ ] Use descope web sdk for templates
