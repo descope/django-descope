@@ -18,6 +18,22 @@ def DescopeMiddleware(get_response):
     descope_client = DescopeClient(project_id=settings.PROJECT_ID)
 
     def middleware(request: HttpRequest) -> HttpResponse:
+        """Descope request middleware
+
+        This middlware inspects the session for an existing session and refresh token.
+        
+        On every request the session token is validated to ensure the JWT hasn't expired,
+        in case it is expired, the validate call uses the refresh token to aquire a new session JWT and
+        stores it in the user session.
+        
+        In any case where the session invalidates and cannot be renewed, the user is logged out.
+        
+        Args:
+            request (HttpRequest): Django HTTP Request
+
+        Returns:
+            HttpResponse: Django HTTP Response
+        """
         refresh_token: dict = request.session.get('descopeRefresh')
         session_token: dict = request.session.get('descopeSession')
         
@@ -29,7 +45,7 @@ def DescopeMiddleware(get_response):
             request.session['descopeSession'] = jwt_response[SESSION_TOKEN_NAME]
         except AuthException as e:
             logger.error(e)
-            raise e
+            logout(request)
         
         return get_response(request)
 

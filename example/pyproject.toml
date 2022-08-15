@@ -6,9 +6,9 @@ authors = ["Descope <info@descope.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
-django = "4.1"
-descope-django = {path = ".."}
+python = ">=3.6.2,<4.0"
+django = "^3.2"
+django-descope = {path = ".."}
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"

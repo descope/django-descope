@@ -138,4 +138,4 @@ class Logout(RedirectView):
 class ShowTokens(View):
     
     def get(self, request: HttpRequest, *args, **kwargs):
-        return JsonResponse({'session': request.session.get('descopeSession'), 'refresh': request.session.get('descopeRefresh')})
+        return JsonResponse({'user': str(request.user), 'session': request.session.get('descopeSession'), 'refresh': request.session.get('descopeRefresh')})

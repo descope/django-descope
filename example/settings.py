@@ -28,13 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-DESCOPE_PROJECT_ID = 'P2CqCdq2bnO9JS2awFKlIPngwPUK'
+DESCOPE_PROJECT_ID = 'P2CqCdq2bnO9JS2awFKlIPngwPUK' ## <-- Set this to your project ID
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django_descope',
+    'django_descope', ## <-- Add this
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_descope.middleware.DescopeMiddleware',
+    'django_descope.middleware.DescopeMiddleware', ## <-- Add this **after** sessions middleware
 ]
 
 ROOT_URLCONF = 'urls'
@@ -89,20 +89,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+AUTH_PASSWORD_VALIDATORS = [] # With descope, there's no need for passwords!
 
 
 # Internationalization

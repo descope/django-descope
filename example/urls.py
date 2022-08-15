@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('descope/', include('django_descope.urls'))
+    path('auth/', include('django_descope.urls')) ## <-- Add the Descope URLs
 ]

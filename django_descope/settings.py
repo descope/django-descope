@@ -12,7 +12,7 @@ LOGIN_TEMPLATE_NAME = getattr(settings, 'DESCOPE_LOGIN_TEMPLATE_NAME', 'django_d
 LOGIN_SENT_TEMPLATE_NAME = getattr(settings, 'DESCOPE_LOGIN_SENT_TEMPLATE_NAME', 'django_descope/login_sent.html')
 LOGIN_FAILED_TEMPLATE_NAME = getattr(settings, 'DESCOPE_LOGIN_FAILED_TEMPLATE_NAME', 'django_descope/login_failed.html')
 SIGNUP_TEMPLATE_NAME = getattr(settings, 'DESCOPE_SIGNUP_TEMPLATE_NAME', 'django_descope/signup.html')
-LOGIN_SUCCESS_REDIRECT = getattr(settings, 'DESCOPE_LOGIN_SUCCESS_REDIRECT', 'descope/tokens')
+LOGIN_SUCCESS_REDIRECT = getattr(settings, 'DESCOPE_LOGIN_SUCCESS_REDIRECT', 'django_descope:show_tokens')
 
 # If this setting is set to False a user account will be created the first time
 # a user requests a login link.
