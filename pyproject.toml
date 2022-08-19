@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "django_descope"
+version = "0.1.0"
+description = "Descope plugin for Django"
+authors = ["Descope <info@descope.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.6.2,<4.0"
+descope-auth = {path = "../python-sdk"}
+
+[tool.poetry.dev-dependencies]
+black = "^22.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", 'setuptools>=40.8.0', 'wheel']
+build-backend = 'setuptools.build_meta:__legacy__'
