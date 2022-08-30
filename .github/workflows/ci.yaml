@@ -28,7 +28,6 @@ jobs:
         if: ${{ steps.filter.outputs.py_modified == 'true' }}
         uses: actions/setup-python@v2
         with:
-          python-version: "3.6"
           cache: "poetry"
 
       - name: Install dependencies
