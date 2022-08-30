@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('auth/', include('django_descope.urls')) ## <-- Add the Descope URLs
+    path("admin/", admin.site.urls),
+    path("auth/", include("django_descope.urls")),  # <-- Add the Descope URLs
 ]
