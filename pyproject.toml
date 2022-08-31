@@ -11,7 +11,7 @@ descope-auth = {git = "https://github.com/descope/python-sdk.git", rev = "main"}
 
 [tool.poetry.dev-dependencies]
 flake8 = "5.0.4"
-black = "^2.6.0"
+black = "22.6.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
