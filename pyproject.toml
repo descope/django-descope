@@ -6,12 +6,13 @@ authors = ["Descope <info@descope.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.6.2,<4.0"
-descope-auth = {path = "../python-sdk"}
+python = ">=3.7,<4.0"
+descope-auth = {git = "https://github.com/descope/python-sdk.git", rev = "main"}
 
 [tool.poetry.dev-dependencies]
-black = "^22.6.0"
+flake8 = "5.0.4"
+black = "22.6.0"
 
 [build-system]
-requires = ["poetry-core>=1.0.0", 'setuptools>=40.8.0', 'wheel']
-build-backend = 'setuptools.build_meta:__legacy__'
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
