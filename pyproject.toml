@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.6.2,<4.0"
-descope-auth = {git = "git@github.com:descope/python-sdk.git", rev = "main"}
+descope-auth = {git = "https://github.com/descope/python-sdk.git", rev = "main"}
 
 [tool.poetry.dev-dependencies]
 flake8 = "^5.0.4"

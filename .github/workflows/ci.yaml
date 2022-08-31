@@ -1,4 +1,4 @@
-name: Build
+name: Python Build
 
 on:
   pull_request:
