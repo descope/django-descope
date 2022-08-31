@@ -33,7 +33,6 @@ jobs:
       - name: Install dependencies
         if: ${{ steps.filter.outputs.py_modified == 'true' }}
         run: |
-          git config --global url."https://${{ secrets.CI_READ_COMMON }}@github".insteadOf https://github
           poetry install
 
       - name: Black
