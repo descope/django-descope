@@ -1,5 +1,0 @@
-include LICENSE
-include README.rst
-recursive-include django_descope/static *
-recursive-include django_descope/templates *
-recursive-exclude example/ *
