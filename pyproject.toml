@@ -12,7 +12,7 @@ include = [
 exclude = ["example/"]
 
 [tool.poetry.dependencies]
-python = "3.7.13"
+python = ">=3.7,<4.0"
 descope = "0.1.0"
 
 [tool.poetry.group.dev.dependencies]
