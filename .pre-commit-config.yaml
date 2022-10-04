@@ -36,22 +36,12 @@ repos:
         args: ["-lparanoid"]
         files: "pyproject.toml"
   - repo: https://github.com/python-poetry/poetry
-    rev: 1.2.0 # add version here
+    rev: 1.2.1
     hooks:
       - id: poetry-check
       - id: poetry-lock
       - id: poetry-export
         args: ["-f", "requirements.txt", "-o", "requirements.txt"]
-      - id: poetry-export
-        args:
-          [
-            "-f",
-            "requirements.txt",
-            "-o",
-            "requirements-dev.txt",
-            "--only",
-            "dev",
-          ]
   - repo: local
     hooks:
       - id: print_statement
