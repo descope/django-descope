@@ -48,6 +48,7 @@ flake8 = "5.0.4"
 black = "22.8.0"
 pre-commit = "2.20.0"
 liccheck = "0.7.2"
+isort = "5.10.1"
 
 # Authorized and unauthorized licenses in LOWER CASE
 [tool.liccheck]
