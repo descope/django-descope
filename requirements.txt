@@ -102,9 +102,9 @@ cryptography==38.0.1 ; python_version >= "3.7" and python_version < "4.0" \
 descope==0.1.0 ; python_version >= "3.7" and python_version < "4.0" \
     --hash=sha256:b00b2d108c0b90725a41752157083ff76b74ccbe7f2c27e3758d0219a32a6d0f \
     --hash=sha256:d20be12b9ee6aa8ac0a1d01c61b32903350c513f903e616591597a3aa0127fae
-django==3.2.16 ; python_version >= "3.7" and python_version < "4.0" \
-    --hash=sha256:18ba8efa36b69cfcd4b670d0fa187c6fe7506596f0ababe580e16909bcdec121 \
-    --hash=sha256:3adc285124244724a394fa9b9839cc8cd116faf7d159554c43ecdaa8cdf0b94d
+Django==4.1.2; python_version >= "3.7" and python_version < "4.0" \
+    --hash=sha256:26dc24f99c8956374a054bcbf58aab8dc0cad2e6ac82b0fe036b752c00eee793 \
+    --hash=sha256:b8d843714810ab88d59344507d4447be8b2cf12a49031363b6eed9f1b9b2280f
 dnspython==2.2.1 ; python_version >= "3.7" and python_version < "4.0" \
     --hash=sha256:0f7569a4a6ff151958b64304071d370daa3243d15941a7beedf0c9fe5105603e \
     --hash=sha256:a851e51367fb93e9e1361732c1d60dab63eff98712e503ea7d92e6eccb109b4f
