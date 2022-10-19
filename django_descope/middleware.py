@@ -1,14 +1,8 @@
 import logging
 
+from descope import SESSION_TOKEN_NAME, AuthException, DescopeClient
 from django.contrib.auth import logout
 from django.http import HttpRequest, HttpResponse
-
-from descope import (
-    SESSION_TOKEN_NAME,
-    AuthException,
-    DescopeClient,
-)
-
 
 from . import settings
 
