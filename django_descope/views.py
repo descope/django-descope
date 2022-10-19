@@ -1,15 +1,5 @@
 import logging
 
-from django.conf import settings as django_settings
-from django.contrib.auth import get_user_model, login, logout
-from django.http import HttpResponseRedirect, HttpRequest, JsonResponse
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import never_cache
-from django.views.generic import TemplateView, View
-from django.views.generic.base import RedirectView
-from django.urls import reverse
-from django.views.decorators.csrf import csrf_protect
-
 from descope import (
     REFRESH_SESSION_TOKEN_NAME,
     SESSION_TOKEN_NAME,
@@ -17,6 +7,15 @@ from descope import (
     DeliveryMethod,
     DescopeClient,
 )
+from django.conf import settings as django_settings
+from django.contrib.auth import get_user_model, login, logout
+from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
+from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_protect
+from django.views.generic import TemplateView, View
+from django.views.generic.base import RedirectView
 
 from . import settings
 from .forms import LoginForm, SignupForm

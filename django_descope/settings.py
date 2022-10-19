@@ -1,5 +1,6 @@
 # flake8: noqa: E501
 from inspect import getargs
+
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 

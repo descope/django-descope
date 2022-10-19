@@ -8,7 +8,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
 django = "3.2"
-django-descope = {path = ".."}
+django-descope = {path = "..", develop = true}
 
 [tool.poetry.dev-dependencies]
 black = "22.6.0"
