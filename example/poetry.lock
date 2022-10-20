@@ -63,7 +63,7 @@ optional = false
 python-versions = ">=3.6.0"
 
 [package.extras]
-unicode-backport = ["unicodedata2"]
+unicode_backport = ["unicodedata2"]
 
 [[package]]
 name = "click"
@@ -106,20 +106,20 @@ test = ["hypothesis (>=1.11.4,!=3.79.2)", "iso8601", "pretend", "pytest (>=6.2.0
 
 [[package]]
 name = "descope"
-version = "0.1.0"
+version = "0.2.0"
 description = "Descope Python SDK"
 category = "main"
 optional = false
 python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
-cryptography = ">=38.0.1,<39.0.0"
-email-validator = ">=1.2.1,<2.0.0"
-PyJWT = ">=2.4.0,<3.0.0"
-requests = ">=2.28.1,<3.0.0"
+cryptography = "38.0.1"
+email-validator = "1.3.0"
+PyJWT = "2.5.0"
+requests = "2.28.1"
 
 [[package]]
-name = "django"
+name = "Django"
 version = "3.2.16"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
@@ -145,7 +145,8 @@ python-versions = ">=3.7,<4.0"
 develop = true
 
 [package.dependencies]
-descope = "0.1.0"
+descope = "0.2.0"
+Django = ">=3.2,<5"
 
 [package.source]
 type = "directory"
@@ -278,7 +279,7 @@ urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
-use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
+use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "sqlparse"
@@ -340,7 +341,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0"
-content-hash = "65be46b250079dbe706dee10625a006ee3ef984011033c45afcf1d524dcbe8a5"
+content-hash = "ed73862cb869873e0b7eea774cb30524bcc6425001cb5808c5ebbdf49a008987"
 
 [metadata.files]
 asgiref = [
@@ -483,10 +484,10 @@ cryptography = [
     {file = "cryptography-38.0.1.tar.gz", hash = "sha256:1db3d807a14931fa317f96435695d9ec386be7b84b618cc61cfa5d08b0ae33d7"},
 ]
 descope = [
-    {file = "descope-0.1.0-py3-none-any.whl", hash = "sha256:d20be12b9ee6aa8ac0a1d01c61b32903350c513f903e616591597a3aa0127fae"},
-    {file = "descope-0.1.0.tar.gz", hash = "sha256:b00b2d108c0b90725a41752157083ff76b74ccbe7f2c27e3758d0219a32a6d0f"},
+    {file = "descope-0.2.0-py3-none-any.whl", hash = "sha256:b8230a8a284582d72183d650274aa02e8116ba12008aee365b464b8a23b2c287"},
+    {file = "descope-0.2.0.tar.gz", hash = "sha256:0e4980f9ee73d50771b11dd03661a5ecba3fd253002950fed340670e8f2be712"},
 ]
-django = [
+Django = [
     {file = "Django-3.2.16-py3-none-any.whl", hash = "sha256:18ba8efa36b69cfcd4b670d0fa187c6fe7506596f0ababe580e16909bcdec121"},
     {file = "Django-3.2.16.tar.gz", hash = "sha256:3adc285124244724a394fa9b9839cc8cd116faf7d159554c43ecdaa8cdf0b94d"},
 ]

@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
-DESCOPE_PROJECT_ID = "P2CqCdq2bnO9JS2awFKlIPngwPUK"  # <-- Set this to your project ID
+DESCOPE_PROJECT_ID = "P2GMsgxPSSQrq3Ig7M0ExAwoRGbP"  # <-- Set this to your project ID
 
 
 # Application definition
@@ -125,5 +125,27 @@ LOGGING = {
     "root": {
         "handlers": ["console"],
         "level": "DEBUG",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "django.request": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+        "django.db.backends": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+        "urllib3": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
     },
 }

@@ -52,7 +52,5 @@ DESCOPE_SIGNUP_TEMPLATE_NAME
 
 ### TODO:
 
-- [ ] Get user details (name?) from jwt
-- [ ] Get user permissions from claims
 - [ ] Add additional authentication methods
-- [ ] Use descope web sdk for templates
+- [ ] Add flows support

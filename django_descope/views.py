@@ -46,9 +46,6 @@ class Login(TemplateView):
             return self.render_to_response(context)
 
         email = form.cleaned_data["email"]
-        if not settings.REQUIRE_SIGNUP:
-            User.objects.get_or_create(username=email, email=email)
-
         try:
             descope_client.magiclink.sign_in(
                 DeliveryMethod.EMAIL,
@@ -82,12 +79,21 @@ class LoginVerify(TemplateView):
             return self.render_to_response(context)
 
         logger.info("Login successful", jwt_response)
-        request.session["descopeSession"] = jwt_response[SESSION_TOKEN_NAME]
+        request.session["descopeUser"] = u = jwt_response["user"]
+        request.session["descopeSession"] = s = jwt_response[SESSION_TOKEN_NAME]
         request.session["descopeRefresh"] = jwt_response[REFRESH_SESSION_TOKEN_NAME]
-        user = User.objects.get(email=jwt_response["user"]["email"])
+
+        user, created = User.objects.get_or_create(
+            username=u["userId"],
+            email=u["email"],
+            is_staff=("is_staff" in s["roles"]),
+            first_name=u["name"].split()[0],
+            last_name=" ".join(u["name"].split()[0:]),
+        )
+
         login(request, user)
 
-        return HttpResponseRedirect(settings.LOGIN_SUCCESS_REDIRECT)
+        return HttpResponseRedirect(reverse(settings.LOGIN_SUCCESS_REDIRECT))
 
 
 @method_decorator(csrf_protect, name="dispatch")
@@ -110,11 +116,6 @@ class Signup(TemplateView):
             return self.render_to_response(context)
 
         email = form.cleaned_data["email"]
-
-        user, created = User.objects.get_or_create(
-            email=email,
-            username=email,
-        )
         try:
             descope_client.magiclink.sign_up_or_in(
                 DeliveryMethod.EMAIL,
@@ -145,8 +146,13 @@ class ShowTokens(View):
     def get(self, request: HttpRequest, *args, **kwargs):
         return JsonResponse(
             {
-                "user": str(request.user),
+                "user": {
+                    "user": str(request.user),
+                    "is_staff": request.user.is_staff,
+                    "is_superuser": request.user.is_superuser,
+                },
                 "session": request.session.get("descopeSession"),
                 "refresh": request.session.get("descopeRefresh"),
+                "login": request.session.get("descopeUser"),
             }
         )
