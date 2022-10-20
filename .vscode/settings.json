@@ -1,5 +1,14 @@
 {
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "db",
+            "database": "${workspaceFolder:django-descope}/db.sqlite3"
+        }
+    ]
 }

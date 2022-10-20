@@ -32,3 +32,7 @@ LOGIN_SUCCESS_REDIRECT = getattr(
 REQUIRE_SIGNUP = getattr(settings, "DESCOPE_REQUIRE_SIGNUP", True)
 if not isinstance(REQUIRE_SIGNUP, bool):
     raise ImproperlyConfigured('"DESCOPE_REQUIRE_SIGNUP" must be a boolean')
+
+# Role names to create in Descope that will map to User attributes
+IS_STAFF_ROLE = getattr(settings, "DESCOPE_IS_STAFF_ROLE", "is_staff")
+IS_SUPERUSER_ROLE = getattr(settings, "DESCOPE_IS_SUPERUSER_ROLE", "is_superuser")

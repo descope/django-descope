@@ -126,26 +126,4 @@ LOGGING = {
         "handlers": ["console"],
         "level": "DEBUG",
     },
-    "loggers": {
-        "django": {
-            "handlers": ["console"],
-            "level": "INFO",
-            "propagate": True,
-        },
-        "django.request": {
-            "handlers": ["console"],
-            "level": "DEBUG",
-            "propagate": True,
-        },
-        "django.db.backends": {
-            "handlers": ["console"],
-            "level": "DEBUG",
-            "propagate": True,
-        },
-        "urllib3": {
-            "handlers": ["console"],
-            "level": "DEBUG",
-            "propagate": True,
-        },
-    },
 }
