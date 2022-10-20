@@ -5,6 +5,13 @@ This plugin integrates Descope with your Django app.
 
 ## Quick start
 
+1. Sign up for Descope
+
+- Get your project id and set in settings (see below)
+- Create two roles in Descope, that will be mapped to Django permissions, create a user and add these roles to your user
+  - is_staff
+  - is_superuser
+
 1. Add "django_descope" to your INSTALLED_APPS setting like this:
 
 ```
