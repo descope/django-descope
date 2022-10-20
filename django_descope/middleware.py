@@ -29,20 +29,30 @@ def DescopeMiddleware(get_response):
         Returns:
             HttpResponse: Django HTTP Response
         """
-        refresh_token: dict = request.session.get("descopeRefresh")
-        session_token: dict = request.session.get("descopeSession")
+        r: dict = request.session.get("descopeRefresh")
+        s: dict = request.session.get("descopeSession")
 
-        if not (refresh_token and session_token):
+        if not (r and s):
             logout(request)
             return get_response(request)
         try:
             jwt_response: dict = descope_client.validate_session_request(
-                session_token.get("jwt"), refresh_token.get("jwt")
+                s.get("jwt"), r.get("jwt")
             )
             request.session["descopeSession"] = jwt_response[SESSION_TOKEN_NAME]
         except AuthException as e:
             logger.error(e)
             logout(request)
+
+        # Update roles
+        is_staff = settings.IS_STAFF_ROLE in s["roles"]
+        is_superuser = settings.IS_SUPERUSER_ROLE in s["roles"]
+        if request.user.is_staff != is_staff:
+            request.user.is_staff = is_staff
+            request.user.save(update_fields=["is_staff"])
+        if request.user.is_superuser != is_superuser:
+            request.user.is_superuser = is_superuser
+            request.user.save(update_fields=["is_superuser"])
 
         return get_response(request)
 

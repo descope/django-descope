@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
-DESCOPE_PROJECT_ID = "P2CqCdq2bnO9JS2awFKlIPngwPUK"  # <-- Set this to your project ID
+DESCOPE_PROJECT_ID = "P2GMsgxPSSQrq3Ig7M0ExAwoRGbP"  # <-- Set this to your project ID
 
 
 # Application definition
