@@ -45,8 +45,9 @@ def DescopeMiddleware(get_response):
             logout(request)
 
         # Update roles
-        is_staff = settings.IS_STAFF_ROLE in s["roles"]
-        is_superuser = settings.IS_SUPERUSER_ROLE in s["roles"]
+        roles = s.get("roles", [])
+        is_staff = settings.IS_STAFF_ROLE in roles
+        is_superuser = settings.IS_SUPERUSER_ROLE in roles
         if request.user.is_staff != is_staff:
             request.user.is_staff = is_staff
             request.user.save(update_fields=["is_staff"])
