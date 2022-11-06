@@ -9,6 +9,7 @@ license = "MIT"
 python = ">=3.7,<4.0"
 django = ">=3.2,<5"
 django-descope = {path = "..", develop = true}
+python-dotenv = "0.21.0"
 
 [tool.poetry.dev-dependencies]
 black = "22.6.0"

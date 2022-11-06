@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +33,9 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
-DESCOPE_PROJECT_ID = "P2GMsgxPSSQrq3Ig7M0ExAwoRGbP"  # <-- Set this to your project ID
+DESCOPE_PROJECT_ID = os.environ.get(
+    "DESCOPE_PROJECT_ID"
+)  # <-- Set this to your project ID
 
 
 # Application definition

@@ -1,4 +1,5 @@
 import logging
+from typing import Dict
 
 from descope import (
     REFRESH_SESSION_TOKEN_NAME,
@@ -79,16 +80,26 @@ class LoginVerify(TemplateView):
             return self.render_to_response(context)
 
         logger.info("Login successful", jwt_response)
+
+        u: Dict
+        s: Dict
         request.session["descopeUser"] = u = jwt_response["user"]
         request.session["descopeSession"] = s = jwt_response[SESSION_TOKEN_NAME]
         request.session["descopeRefresh"] = jwt_response[REFRESH_SESSION_TOKEN_NAME]
 
-        user, created = User.objects.get_or_create(
-            username=u["userId"],
-            email=u["email"],
-            is_staff=("is_staff" in s["roles"]),
-            first_name=u["name"].split()[0],
-            last_name=" ".join(u["name"].split()[0:]),
+        username = u.get("userId")
+        email = u.get("email")
+        roles = s.get("roles", [])
+        name = u.get("name", "").split()
+        first_name = " ".join(name[:1])
+        last_name = " ".join(name[1:])
+        user, _ = User.objects.get_or_create(
+            username=username,
+            email=email,
+            is_staff=("is_staff" in roles),
+            is_superuser=("is_superuser" in roles),
+            first_name=first_name,
+            last_name=last_name,
         )
 
         login(request, user)
