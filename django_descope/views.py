@@ -46,7 +46,7 @@ class Login(TemplateView):
             context["login_form"] = form
             return self.render_to_response(context)
 
-        email = form.cleaned_data["email"]
+        email = form.cleaned_data.get("email")
         try:
             descope_client.magiclink.sign_in(
                 DeliveryMethod.EMAIL,
@@ -72,7 +72,7 @@ class LoginVerify(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        token = request.GET["t"]
+        token = request.GET.get("t")
         try:
             jwt_response = descope_client.magiclink.verify(token)
         except AuthException as e:
@@ -83,9 +83,9 @@ class LoginVerify(TemplateView):
 
         u: Dict
         s: Dict
-        request.session["descopeUser"] = u = jwt_response["user"]
-        request.session["descopeSession"] = s = jwt_response[SESSION_TOKEN_NAME]
-        request.session["descopeRefresh"] = jwt_response[REFRESH_SESSION_TOKEN_NAME]
+        request.session["descopeUser"] = u = jwt_response.get("user")
+        request.session["descopeSession"] = s = jwt_response.get(SESSION_TOKEN_NAME)
+        request.session["descopeRefresh"] = jwt_response.get(REFRESH_SESSION_TOKEN_NAME)
 
         username = u.get("userId")
         email = u.get("email")
@@ -126,7 +126,7 @@ class Signup(TemplateView):
             context["signup_form"] = form
             return self.render_to_response(context)
 
-        email = form.cleaned_data["email"]
+        email = form.cleaned_data.get("email")
         try:
             descope_client.magiclink.sign_up_or_in(
                 DeliveryMethod.EMAIL,
