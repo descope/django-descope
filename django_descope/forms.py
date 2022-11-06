@@ -14,7 +14,7 @@ class LoginForm(forms.Form):
     )
 
     def clean_email(self) -> str:
-        email = self.cleaned_data["email"].lower()
+        email = self.cleaned_data.get("email").lower()
 
         try:
             user = User.objects.get(email=email)
@@ -36,7 +36,7 @@ class SignupForm(forms.Form):
     )
 
     def clean_email(self) -> str:
-        email = self.cleaned_data["email"].lower()
+        email = self.cleaned_data.get("email").lower()
 
         try:
             user = User.objects.get(email=email)

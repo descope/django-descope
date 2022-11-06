@@ -1,4 +1,5 @@
 import logging
+from typing import Dict
 
 from descope import (
     REFRESH_SESSION_TOKEN_NAME,
@@ -45,7 +46,7 @@ class Login(TemplateView):
             context["login_form"] = form
             return self.render_to_response(context)
 
-        email = form.cleaned_data["email"]
+        email = form.cleaned_data.get("email")
         try:
             descope_client.magiclink.sign_in(
                 DeliveryMethod.EMAIL,
@@ -71,7 +72,7 @@ class LoginVerify(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        token = request.GET["t"]
+        token = request.GET.get("t")
         try:
             jwt_response = descope_client.magiclink.verify(token)
         except AuthException as e:
@@ -79,16 +80,26 @@ class LoginVerify(TemplateView):
             return self.render_to_response(context)
 
         logger.info("Login successful", jwt_response)
-        request.session["descopeUser"] = u = jwt_response["user"]
-        request.session["descopeSession"] = s = jwt_response[SESSION_TOKEN_NAME]
-        request.session["descopeRefresh"] = jwt_response[REFRESH_SESSION_TOKEN_NAME]
 
-        user, created = User.objects.get_or_create(
-            username=u["userId"],
-            email=u["email"],
-            is_staff=("is_staff" in s["roles"]),
-            first_name=u["name"].split()[0],
-            last_name=" ".join(u["name"].split()[0:]),
+        u: Dict
+        s: Dict
+        request.session["descopeUser"] = u = jwt_response.get("user")
+        request.session["descopeSession"] = s = jwt_response.get(SESSION_TOKEN_NAME)
+        request.session["descopeRefresh"] = jwt_response.get(REFRESH_SESSION_TOKEN_NAME)
+
+        username = u.get("userId")
+        email = u.get("email")
+        roles = s.get("roles", [])
+        name = u.get("name", "").split()
+        first_name = " ".join(name[:1])
+        last_name = " ".join(name[1:])
+        user, _ = User.objects.get_or_create(
+            username=username,
+            email=email,
+            is_staff=("is_staff" in roles),
+            is_superuser=("is_superuser" in roles),
+            first_name=first_name,
+            last_name=last_name,
         )
 
         login(request, user)
@@ -115,7 +126,7 @@ class Signup(TemplateView):
             context["signup_form"] = form
             return self.render_to_response(context)
 
-        email = form.cleaned_data["email"]
+        email = form.cleaned_data.get("email")
         try:
             descope_client.magiclink.sign_up_or_in(
                 DeliveryMethod.EMAIL,
