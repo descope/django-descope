@@ -6,7 +6,7 @@ from django.http import HttpRequest, HttpResponse
 
 from . import settings
 
-logger = logging.getLevelName(__name__)
+logger = logging.getLogger(__name__)
 
 
 def DescopeMiddleware(get_response):
@@ -41,7 +41,7 @@ def DescopeMiddleware(get_response):
             )
             request.session["descopeSession"] = jwt_response[SESSION_TOKEN_NAME]
         except AuthException as e:
-            logger.error(e)
+            logger.exception(e)
             logout(request)
 
         # Update roles
