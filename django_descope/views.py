@@ -53,7 +53,7 @@ class Login(TemplateView):
                 email,
                 uri=request.build_absolute_uri(reverse("django_descope:login_verify")),
             )
-            logger.info("Requested magiclink siginin for", email)
+            logger.info("Requested magiclink siginin for %s", email)
         except AuthException as e:
             form.add_error("email", str(e))
             context["login_form"] = form
@@ -93,14 +93,14 @@ class LoginVerify(TemplateView):
         name = u.get("name", "").split()
         first_name = " ".join(name[:1])
         last_name = " ".join(name[1:])
-        user, _ = User.objects.get_or_create(
-            username=username,
-            email=email,
-            is_staff=("is_staff" in roles),
-            is_superuser=("is_superuser" in roles),
-            first_name=first_name,
-            last_name=last_name,
-        )
+        user, _ = User.objects.get_or_create(username=username)
+        user.email = email
+        user.is_staff = "is_staff" in roles
+        user.is_superuser = "is_superuser" in roles
+        user.first_name = first_name
+        user.last_name = last_name
+
+        user.save()
 
         login(request, user)
 
@@ -133,7 +133,7 @@ class Signup(TemplateView):
                 email,
                 uri=request.build_absolute_uri(reverse("django_descope:login_verify")),
             )
-            logger.info("Requested magiclink siginup for", email)
+            logger.info("Requested magiclink siginup for %s", email)
         except AuthException as e:
             form.add_error("email", str(e))
             context["login_form"] = form
