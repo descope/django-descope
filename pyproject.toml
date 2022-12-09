@@ -44,7 +44,7 @@ Django = ">=3.2,<5"
 descope = "==0.3.0"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "5.0.4"
+flake8 = "6.0.0"
 black = "22.8.0"
 pre-commit = "2.20.0"
 liccheck = "0.7.3"
