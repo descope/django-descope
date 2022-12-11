@@ -1,60 +1,33 @@
 import logging
 
-from descope import SESSION_TOKEN_NAME, AuthException, DescopeClient
-from django.contrib.auth import logout
+from django.contrib.auth import login, logout
 from django.http import HttpRequest, HttpResponse
+from django.urls import reverse
 
-from . import settings
+from .authentication import DescopeAuthentication
+from .utils import delete_cookies, set_cookies
 
 logger = logging.getLogger(__name__)
 
 
-def DescopeMiddleware(get_response):
-    descope_client = DescopeClient(project_id=settings.PROJECT_ID)
+class DescopeMiddleware:
+    _auth = DescopeAuthentication()
 
-    def middleware(request: HttpRequest) -> HttpResponse:
-        """Descope request middleware
+    def __init__(self, get_response: HttpResponse = None):
+        self.get_response = get_response
 
-        This middlware inspects the session for an existing session and refresh token.
+    def __call__(self, request: HttpRequest):
+        response: HttpResponse = self.get_response(request)
 
-        On every request the session token is validated to ensure the JWT hasn't expired,
-        in case it is expired, the validate call uses the refresh token to aquire a new session JWT
-        and stores it in the user session.
-
-        In any case where the session invalidates and cannot be renewed, the user is logged out.
-
-        Args:
-            request (HttpRequest): Django HTTP Request
-
-        Returns:
-            HttpResponse: Django HTTP Response
-        """
-        r: dict = request.session.get("descopeRefresh")
-        s: dict = request.session.get("descopeSession")
-
-        if not (r and s):
+        if request.get_full_path() == reverse("admin:logout"):
             logout(request)
-            return get_response(request)
-        try:
-            jwt_response: dict = descope_client.validate_session_request(
-                s.get("jwt"), r.get("jwt")
-            )
-            request.session["descopeSession"] = jwt_response[SESSION_TOKEN_NAME]
-        except AuthException as e:
-            logger.exception(e)
-            logout(request)
+            delete_cookies(response)
+            return response
 
-        # Update roles
-        roles = s.get("roles", [])
-        is_staff = settings.IS_STAFF_ROLE in roles
-        is_superuser = settings.IS_SUPERUSER_ROLE in roles
-        if request.user.is_staff != is_staff:
-            request.user.is_staff = is_staff
-            request.user.save(update_fields=["is_staff"])
-        if request.user.is_superuser != is_superuser:
-            request.user.is_superuser = is_superuser
-            request.user.save(update_fields=["is_superuser"])
+        user, jwt = self._auth.authenticate(request=request)
+        if user:
+            login(request, user)
+            response = self.get_response(request)
+            set_cookies(response, jwt)
 
-        return get_response(request)
-
-    return middleware
+        return response

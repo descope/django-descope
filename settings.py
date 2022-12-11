@@ -41,14 +41,17 @@ DESCOPE_PROJECT_ID = os.environ.get(
 # Application definition
 
 INSTALLED_APPS = [
-    "django_descope",  # <-- Add this
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_descope",  # <-- Add this
 ]
+
+AUTHENTICATION_BACKENDS = ["django_descope.authentication.DescopeAuthentication"]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -134,3 +137,5 @@ LOGGING = {
         "level": "DEBUG",
     },
 }
+
+LOGIN_REDIRECT_URL = "/admin"

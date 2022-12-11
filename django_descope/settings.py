@@ -27,6 +27,10 @@ LOGIN_SUCCESS_REDIRECT = getattr(
     settings, "DESCOPE_LOGIN_SUCCESS_REDIRECT", "django_descope:show_tokens"
 )
 
+AUTH_COOKIE_SECURE = getattr(settings, "DESCOPE_AUTH_COOKIE_SECURE", True)
+AUTH_COOKIE_HTTP_ONLY = getattr(settings, "DESCOPE_AUTH_COOKIE_HTTP_ONLY", True)
+AUTH_COOKIE_SAMESITE = getattr(settings, "DESCOPE_AUTH_COOKIE_SAMESITE", "Lax")
+
 # If this setting is set to False a user account will be created the first time
 # a user requests a login link.
 REQUIRE_SIGNUP = getattr(settings, "DESCOPE_REQUIRE_SIGNUP", True)
