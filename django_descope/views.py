@@ -1,15 +1,13 @@
 import logging
-from typing import Dict
 
 from descope import (
-    REFRESH_SESSION_TOKEN_NAME,
-    SESSION_TOKEN_NAME,
+    REFRESH_SESSION_COOKIE_NAME,
+    SESSION_COOKIE_NAME,
     AuthException,
     DeliveryMethod,
     DescopeClient,
 )
 from django.conf import settings as django_settings
-from django.contrib.auth import get_user_model, login, logout
 from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -18,10 +16,10 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.generic import TemplateView, View
 from django.views.generic.base import RedirectView
 
-from . import settings
+from . import settings, utils
 from .forms import LoginForm, SignupForm
 
-User = get_user_model()
+# User = get_user_model()
 logger = logging.getLogger(__name__)
 
 descope_client = DescopeClient(project_id=settings.PROJECT_ID)
@@ -38,7 +36,7 @@ class Login(TemplateView):
         return self.render_to_response(context)
 
     def post(self, request: HttpRequest, *args, **kwargs):
-        logout(request)
+        # logout(request)
         context = self.get_context_data(**kwargs)
         context["require_signup"] = settings.REQUIRE_SIGNUP
         form = LoginForm(request.POST)
@@ -70,7 +68,7 @@ class LoginSent(TemplateView):
 class LoginVerify(TemplateView):
     template_name = settings.LOGIN_FAILED_TEMPLATE_NAME
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request: HttpRequest, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         token = request.GET.get("t")
         try:
@@ -79,45 +77,25 @@ class LoginVerify(TemplateView):
             context["login_error"] = e.error_message
             return self.render_to_response(context)
 
-        logger.info("Login successful", jwt_response)
+        logger.debug("Login successful, JWT: %s", jwt_response)
 
-        u: Dict
-        s: Dict
-        request.session["descopeUser"] = u = jwt_response.get("user")
-        request.session["descopeSession"] = s = jwt_response.get(SESSION_TOKEN_NAME)
-        request.session["descopeRefresh"] = jwt_response.get(REFRESH_SESSION_TOKEN_NAME)
+        response = HttpResponseRedirect(reverse(settings.LOGIN_SUCCESS_REDIRECT))
 
-        username = u.get("userId")
-        email = u.get("email")
-        roles = s.get("roles", [])
-        name = u.get("name", "").split()
-        first_name = " ".join(name[:1])
-        last_name = " ".join(name[1:])
-        user, _ = User.objects.get_or_create(username=username)
-        user.email = email
-        user.is_staff = "is_staff" in roles
-        user.is_superuser = "is_superuser" in roles
-        user.first_name = first_name
-        user.last_name = last_name
+        utils.set_cookies(response, jwt_response)
 
-        user.save()
-
-        login(request, user)
-
-        return HttpResponseRedirect(reverse(settings.LOGIN_SUCCESS_REDIRECT))
+        return response
 
 
 @method_decorator(csrf_protect, name="dispatch")
 class Signup(TemplateView):
     template_name = settings.SIGNUP_TEMPLATE_NAME
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request: HttpRequest, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         context["signup_form"] = SignupForm()
         return self.render_to_response(context)
 
-    def post(self, request, *args, **kwargs):
-        logout(request)
+    def post(self, request: HttpRequest, *args, **kwargs):
         context = self.get_context_data(**kwargs)
 
         form = SignupForm(request.POST)
@@ -143,27 +121,23 @@ class Signup(TemplateView):
 
 
 class Logout(RedirectView):
-    def get(self, request, *args, **kwargs):
-        logout(self.request)
+    def get(self, request: HttpRequest, *args, **kwargs):
 
         next_page = request.GET.get("next")
-        if next_page:
-            return HttpResponseRedirect(next_page)
+        if not next_page:
+            next_page = reverse(django_settings.LOGOUT_REDIRECT_URL)
 
-        return HttpResponseRedirect(reverse(django_settings.LOGOUT_REDIRECT_URL))
+        response = HttpResponseRedirect(next_page)
+        response.delete_cookie(REFRESH_SESSION_COOKIE_NAME)
+        response.delete_cookie(SESSION_COOKIE_NAME)
+        return response
 
 
 class ShowTokens(View):
     def get(self, request: HttpRequest, *args, **kwargs):
         return JsonResponse(
             {
-                "user": {
-                    "user": str(request.user),
-                    "is_staff": request.user.is_staff,
-                    "is_superuser": request.user.is_superuser,
-                },
-                "session": request.session.get("descopeSession"),
-                "refresh": request.session.get("descopeRefresh"),
-                "login": request.session.get("descopeUser"),
+                "session": request.COOKIES.get(SESSION_COOKIE_NAME),
+                "refresh": request.COOKIES.get(REFRESH_SESSION_COOKIE_NAME),
             }
         )

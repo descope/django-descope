@@ -1,8 +1,14 @@
+from django.contrib import admin
 from django.urls import path
 
 from . import views
 
 app_name = "django_descope"
+
+admin.autodiscover()
+admin.site.login = views.Login
+admin.site.logout = views.Logout
+
 
 urlpatterns = [
     path("login/", views.Login.as_view(), name="login"),
