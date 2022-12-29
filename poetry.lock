@@ -478,14 +478,14 @@ requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "liccheck"
-version = "0.8.0"
+version = "0.8.1"
 description = "Check python packages from requirement.txt and report issues"
 category = "dev"
 optional = false
 python-versions = ">=2.7"
 files = [
-    {file = "liccheck-0.8.0-py2.py3-none-any.whl", hash = "sha256:b8ad0a8036a7bcff7b87c0f32de250826ea2ee1744774bda64dc4639e62c115f"},
-    {file = "liccheck-0.8.0.tar.gz", hash = "sha256:a22e2bca71f46dc08601e20ffa4d0cd4ebf9d1ae042e38edc2a9cf69cd122a7d"},
+    {file = "liccheck-0.8.1-py2.py3-none-any.whl", hash = "sha256:f83891ab4b603f6532faf29747101b2af51eaff04158ac4a2127c56bfb5aadce"},
+    {file = "liccheck-0.8.1.tar.gz", hash = "sha256:ea5fa05550c6d31b12ff5200f746c415b5f74e1d7c8666003e7252e303a1817f"},
 ]
 
 [package.dependencies]
@@ -931,4 +931,4 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "8d13834ddae22d58a81900e968d01c1f6d9bf670efea13ad2d290a18516eb259"
+content-hash = "69212e73ae9ef25a6f6ee769871a05d44550064443cb7e1feb6f631054b70dd1"
