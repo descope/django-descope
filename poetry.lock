@@ -341,7 +341,7 @@ files = [
 ]
 
 [[package]]
-name = "Django"
+name = "django"
 version = "4.1.4"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
@@ -931,4 +931,4 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "464b416a43d1cc8851dd964610ef723f87ea1c98ab3c45343981737058350994"
+content-hash = "36bed9db61266c419b79c1de9992e9273004bf7d915d08e64034579cc60efec2"
