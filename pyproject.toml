@@ -50,7 +50,7 @@ pre-commit = "2.21.0"
 liccheck = "0.8.1"
 isort = "5.11.4"
 python-dotenv = "0.21.0"
-tox = "4.0.18"
+tox = "4.0.19"
 
 # Authorized and unauthorized licenses in LOWER CASE
 [tool.liccheck]
