@@ -146,6 +146,6 @@ sqlparse==0.4.3 ; python_full_version >= "3.8.1" and python_version < "4.0" \
 tzdata==2022.7 ; python_full_version >= "3.8.1" and python_version < "4.0" and sys_platform == "win32" \
     --hash=sha256:2b88858b0e3120792a3c0635c23daf36a7d7eeeca657c323da299d2094402a0d \
     --hash=sha256:fe5f866eddd8b96e9fcba978f8e503c909b19ea7efda11e52e39494bad3a7bfa
-urllib3==1.26.13 ; python_full_version >= "3.8.1" and python_version < "4" \
-    --hash=sha256:47cc05d99aaa09c9e72ed5809b60e7ba354e64b59c9c173ac3018642d8bb41fc \
-    --hash=sha256:c083dd0dce68dbfbe1129d5271cb90f9447dea7d52097c6e0126120c521ddea8
+urllib3==1.26.14; python_full_version >= "3.8.1" and python_version < "4" \
+    --hash=sha256:076907bf8fd355cde77728471316625a4d2f7e713c125f51953bb5b3eecf4f72 \
+    --hash=sha256:75edcdc2f7d85b137124a6c3c9fc3933cdeaa12ecb9a6a959f22797a0feca7e1
