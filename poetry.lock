@@ -839,14 +839,14 @@ files = [
 
 [[package]]
 name = "tox"
-version = "4.3.4"
+version = "4.3.5"
 description = "tox is a generic virtualenv management and test command line tool"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "tox-4.3.4-py3-none-any.whl", hash = "sha256:84ee61b27dc983cb5b5d9ef93af10ce54a0e3992df73335fcdf3e8a3d3453a93"},
-    {file = "tox-4.3.4.tar.gz", hash = "sha256:f5ac33b55de2f8764cff260661eb1257107a21c4819714b04f14669991aa7772"},
+    {file = "tox-4.3.5-py3-none-any.whl", hash = "sha256:6dddc4c69718b65aacbef0921ffa8af065b0f63ff0b24ffc403477975853c918"},
+    {file = "tox-4.3.5.tar.gz", hash = "sha256:307993257d792a12a63ff86a0b67a71a5ab2d4a2cc12bbae947115224d4ac3fb"},
 ]
 
 [package.dependencies]
@@ -857,7 +857,7 @@ filelock = ">=3.9"
 packaging = ">=23"
 platformdirs = ">=2.6.2"
 pluggy = ">=1"
-pyproject-api = ">=1.4"
+pyproject-api = ">=1.5"
 tomli = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
 virtualenv = ">=20.17.1"
 
@@ -930,4 +930,4 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "0c4d3f773ad64b46be04b929447547cb5253a6a1f5d5dc3cfa81763eaa38c65f"
+content-hash = "21eec8184e78ff5f3d0f2531965131cd39264efb9e1a158af3958bff7790412a"
