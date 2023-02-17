@@ -325,14 +325,14 @@ tox = ["tox"]
 
 [[package]]
 name = "descope"
-version = "0.9.1"
+version = "1.0.0"
 description = "Descope Python SDK"
 category = "main"
 optional = false
 python-versions = ">=3.7,<4.0"
 files = [
-    {file = "descope-0.9.1-py3-none-any.whl", hash = "sha256:3a60b1095bb6cea1fca11636564a0a05b73c9707a3a6bc25def0080dde115f01"},
-    {file = "descope-0.9.1.tar.gz", hash = "sha256:77bcf4a1824ec5bc5723c0758846aa6634381cd16e92dfe41c8982bd6b26d7af"},
+    {file = "descope-1.0.0-py3-none-any.whl", hash = "sha256:4a7bc280decfd6a34ff243984c7dd96a49de40928b35cb6bb469ddde54a90d5b"},
+    {file = "descope-1.0.0.tar.gz", hash = "sha256:d7937b77c5925ddd43e3eb519feecac30a5a63de8e726dcf99507d61819f4c8c"},
 ]
 
 [package.dependencies]
@@ -943,4 +943,4 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "022862e578b5b6645d711160f076140b3047f24208dce26ff35e4dbafdb7bc42"
+content-hash = "268f35869f7b08ad7eb8394c01e019059691833f166f1db167b292d95a82eaf2"
