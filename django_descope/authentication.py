@@ -22,7 +22,7 @@ class DescopeAuthentication(BaseBackend):
         refresh_token = request.COOKIES.get(REFRESH_SESSION_COOKIE_NAME)
 
         try:
-            validated_token = self._dclient.validate_session_request(
+            validated_token = self._dclient.validate_and_refresh_session(
                 access_token, refresh_token
             )
         except AuthException:
