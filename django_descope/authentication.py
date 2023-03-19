@@ -23,6 +23,8 @@ class DescopeAuthentication(BaseBackend):
         refresh = request.session.get(REFRESH_SESSION_COOKIE_NAME)
 
         logger.debug("Validating (and refreshing) Descope session")
+        logger.debug("session %s", session)
+        logger.debug("refresh %s", refresh)
         try:
             validated_token = self._dclient.validate_and_refresh_session(
                 session, refresh
@@ -37,9 +39,8 @@ class DescopeAuthentication(BaseBackend):
 
     def get_user(self, request: HttpRequest, validated_token=None, refresh_token=None):
         if validated_token:
-            user, created = DescopeUser.objects.get_or_create(
-                username=validated_token.get("sub")
-            )
+            username = validated_token.get("userId") or validated_token.get("sub")
+            user, created = DescopeUser.objects.get_or_create(username=username)
             user.sync(validated_token, refresh_token)
             request.session[SESSION_COOKIE_NAME] = user.session
             return user

@@ -12,7 +12,7 @@ CONTEXT_KEY = "descope_wc_included"
 
 
 @register.simple_tag(takes_context=True)
-def descope_flow(context, flow_id):
+def descope_flow(context, flow_id, success_redirect):
     script = ""
     if not context.get(CONTEXT_KEY):
         script += f'<script src="{WEB_COMPONENT_SRC}"></script>'
@@ -23,17 +23,17 @@ def descope_flow(context, flow_id):
     <descope-wc id="{id}" project-id="{PROJECT_ID}" flow-id="{flow_id}"></descope-wc>
     <script>
         const descopeWcEle = document.getElementById('{id}');
-        descopeWcEle.addEventListener('success', (e) => {{
-            console.dir(e.detail);
+        descopeWcEle.addEventListener('success', async (e) => {{
             const formData = new FormData();
             formData.append('{SESSION_COOKIE_NAME}', e.detail.sessionJwt);
             formData.append('{REFRESH_SESSION_COOKIE_NAME}', e.detail.refreshJwt);
             formData.append('csrfmiddlewaretoken','{csrf_token(context.request)}')
 
-            fetch("{store_jwt_url}", {{
+            await fetch("{store_jwt_url}", {{
                 method: "POST",
                 body: formData,
             }})
+            document.location.replace("{success_redirect}")
         }});
     </script>
     """

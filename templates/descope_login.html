@@ -12,8 +12,9 @@
   <body>
     {% if user.is_authenticated %}
     <h1>Welcome {{ user.email }} you are logged in!</h1>
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
     {% else %}
-      {% descope_flow "sign-up-or-in" %}
+      {% descope_flow "sign-up-or-in" "/" %}
     {% endif %}
   </body>
 </html>
