@@ -39,9 +39,12 @@ repos:
     rev: 1.4.0
     hooks:
       - id: poetry-check
+        files: pyproject.toml
       - id: poetry-lock
+        files: pyproject.toml
       - id: poetry-export
         args: ["-f", "requirements.txt", "-o", "requirements.txt"]
+        files: pyproject.toml
   - repo: https://github.com/dhatim/python-license-check
     rev: 0.8.3
     hooks:

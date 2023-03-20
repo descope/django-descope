@@ -20,7 +20,6 @@ class StoreJwt(View):
         session = request.POST.get(SESSION_COOKIE_NAME)
         refresh = request.POST.get(REFRESH_SESSION_COOKIE_NAME)
         if session and refresh:
-            # descope_client.validate_and_refresh_session(session, refresh)
             request.session[SESSION_COOKIE_NAME] = session
             request.session[REFRESH_SESSION_COOKIE_NAME] = refresh
             return JsonResponse({"success": True})

@@ -41,9 +41,23 @@ _The names of these roles can be customized in the settings below._
    path('auth/', include('django_descope.urls')),
 ```
 
-1. Start the development server and visit http://127.0.0.1:8000/auth/signup
+1. In your site templates, insert the `descope_flow` tag where you want to place your flow
 
-1. Visit http://127.0.0.1:8000/auth/tokens to see the user tokens after login
+```html
+{% load descope %}
+<!-- load the descope registry -->
+
+{% if user.is_authenticated %}
+<h1>Welcome {{ user.email }} you are logged in!</h1>
+<p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %} {% descope_flow "sign-up-or-in" "/" %}
+<!-- provide the descope flow id, and where to redirect after a successful login-->
+{% endif %}
+```
+
+2. Start the development server and visit http://127.0.0.1:8000/auth/signup
+
+3. Visit http://127.0.0.1:8000/auth/tokens to see the user tokens after login
 
 ## Settings
 
@@ -51,13 +65,6 @@ The following settings are available to configure in your project `settings.py`
 
 ```
 DESCOPE_PROJECT_ID **Required**
-DESCOPE_REQUIRE_SIGNUP - Set this to true to create user on first login
-DESCOPE_LOGIN_SENT_REDIRECT
-DESCOPE_LOGIN_SUCCESS_REDIRECT
-DESCOPE_LOGIN_TEMPLATE_NAME
-DESCOPE_LOGIN_SENT_TEMPLATE_NAME
-DESCOPE_LOGIN_FAILED_TEMPLATE_NAME
-DESCOPE_SIGNUP_TEMPLATE_NAME
 DESCOPE_IS_STAFF_ROLE
 DESCOPE_IS_SUPERUSER_ROLE
 ```
