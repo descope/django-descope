@@ -49,7 +49,7 @@ black = "23.1.0"
 pre-commit = "3.1.1"
 liccheck = "0.8.3"
 isort = "5.12.0"
-python-dotenv = "0.21.1"
+python-dotenv = "1.0.0"
 tox = "4.4.6"
 
 # Authorized and unauthorized licenses in LOWER CASE
