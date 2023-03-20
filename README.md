@@ -15,7 +15,7 @@ This plugin integrates Descope with your Django app.
 Map these roles to any user you would like to make a staff or superuser in your Django app.
 _The names of these roles can be customized in the settings below._
 
-1. Add "django_descope" to your INSTALLED_APPS setting like this:
+2. Add "django_descope" to your INSTALLED_APPS setting like this:
 
 ```
    INSTALLED_APPS = [
@@ -24,7 +24,7 @@ _The names of these roles can be customized in the settings below._
    ]
 ```
 
-1. Add Descope Middleware **after** the SessionMiddleware
+3. Add Descope Middleware **after** the SessionMiddleware
 
 ```
    MIDDLEWARE = [
@@ -35,13 +35,13 @@ _The names of these roles can be customized in the settings below._
    ]
 ```
 
-1. Include descope URLconf in your project urls.py like this:
+4. Include descope URLconf in your project urls.py like this:
 
 ```
    path('auth/', include('django_descope.urls')),
 ```
 
-1. In your site templates, insert the `descope_flow` tag where you want to place your flow
+5. In your site templates, insert the `descope_flow` tag where you want to place your flow
 
 ```html
 {% load descope %}
@@ -55,9 +55,9 @@ _The names of these roles can be customized in the settings below._
 {% endif %}
 ```
 
-2. Start the development server and visit http://127.0.0.1:8000/auth/signup
+6. Start the development server and visit http://127.0.0.1:8000/auth/signup
 
-3. Visit http://127.0.0.1:8000/auth/tokens to see the user tokens after login
+7. Visit http://127.0.0.1:8000/auth/tokens to see the user tokens after login
 
 ## Settings
 
