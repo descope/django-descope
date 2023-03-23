@@ -1,11 +1,11 @@
 import logging
 
-from descope import REFRESH_SESSION_TOKEN_NAME, SESSION_TOKEN_NAME, DescopeClient
+from descope import DescopeClient
 from django.contrib.auth import models as auth_models
 from django.core.cache import cache
 from django.utils.functional import cached_property
 
-from .settings import PROJECT_ID
+from .settings import IS_STAFF_ROLE, IS_SUPERUSER_ROLE, PROJECT_ID
 
 logger = logging.getLogger(__name__)
 
@@ -19,18 +19,16 @@ class DescopeUser(auth_models.User):
     is_active = True
     _descope = DescopeClient(PROJECT_ID)
 
-    def sync(self, token, refresh_token):
-        self.token = token
-        self.access = token.get(SESSION_TOKEN_NAME).get("jwt")
-        self.refresh = token.get(REFRESH_SESSION_TOKEN_NAME, {}).get(
-            "jwt", refresh_token
-        )
-        self.user = token.get("user")
-        self.firstSeen = token.get("firstSeen")
+    def sync(self, session, refresh):
+        self.token = session
+        self.session = session.get("jwt")
+        self.refresh = refresh
+        self.user = session.get("user")
+        self.firstSeen = session.get("firstSeen")
         self.username = self._me.get("userId")
         self.email = self._me.get("email")
-        self.is_staff = "is_staff" in self._roles
-        self.is_superuser = "is_superuser" in self._roles
+        self.is_staff = IS_STAFF_ROLE in self._roles
+        self.is_superuser = IS_SUPERUSER_ROLE in self._roles
         self.save()
 
     def __str__(self):

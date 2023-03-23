@@ -5,7 +5,6 @@ from django.http import HttpRequest, HttpResponse
 from django.urls import reverse
 
 from .authentication import DescopeAuthentication
-from .utils import delete_cookies, set_cookies
 
 logger = logging.getLogger(__name__)
 
@@ -21,13 +20,11 @@ class DescopeMiddleware:
 
         if request.get_full_path() == reverse("admin:logout"):
             logout(request)
-            delete_cookies(response)
             return response
 
-        user, jwt = self._auth.authenticate(request=request)
+        user = self._auth.authenticate(request)
         if user:
             login(request, user)
             response = self.get_response(request)
-            set_cookies(response, jwt)
 
         return response

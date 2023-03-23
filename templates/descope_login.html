@@ -1,0 +1,19 @@
+{% load descope %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Descope Django</title>
+    <meta name="description" content="Descope Example" />
+    <meta name="author" content="Descope" />
+  </head>
+
+  <body>
+    {% if user.is_authenticated %}
+    <h1>Welcome {{ user.email }} you are logged in!</h1>
+    {% else %}
+      {% descope_flow "sign-up-or-in" %}
+    {% endif %}
+  </body>
+</html>
