@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "django_descope",  # <-- Add this
+    "example_app",
 ]
 
 AUTHENTICATION_BACKENDS = ["django_descope.authentication.DescopeAuthentication"]

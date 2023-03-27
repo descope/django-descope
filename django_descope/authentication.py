@@ -30,7 +30,8 @@ class DescopeAuthentication(BaseBackend):
                 session, refresh
             )
         except AuthException as e:
-            logger.exception(e)
+            # Could not validate session
+            logger.debug(e)
             logout(request)
             return None
 

@@ -18,7 +18,10 @@ descope_client = DescopeClient(project_id=settings.PROJECT_ID)
 class StoreJwt(View):
     def post(self, request: HttpRequest):
         session = request.POST.get(SESSION_COOKIE_NAME)
-        refresh = request.POST.get(REFRESH_SESSION_COOKIE_NAME)
+        refresh = request.COOKIES.get(REFRESH_SESSION_COOKIE_NAME)
+        if not refresh:
+            refresh = request.POST.get(REFRESH_SESSION_COOKIE_NAME)
+
         if session and refresh:
             request.session[SESSION_COOKIE_NAME] = session
             request.session[REFRESH_SESSION_COOKIE_NAME] = refresh
