@@ -30,7 +30,13 @@ class DescopeAuthentication(BaseBackend):
                 session, refresh
             )
         except AuthException as e:
-            # Could not validate session
+            """
+            Ask forgiveness, not permission.
+                - Grace Hopper
+
+            This exception will be thrown on every unauthenticated request to
+            ensure logging out an invalid user.
+            """
             logger.debug(e)
             logout(request)
             return None
