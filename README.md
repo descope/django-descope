@@ -15,7 +15,13 @@ This plugin integrates Descope with your Django app.
 Map these roles to any user you would like to make a staff or superuser in your Django app.
 _The names of these roles can be customized in the settings below._
 
-2. Add "django_descope" to your INSTALLED_APPS setting like this:
+2. Install "django_descope" and add to your INSTALLED_APPS setting like this:
+
+```bash
+poetry add django_descope
+OR
+pip install django_descope
+```
 
 ```
    INSTALLED_APPS = [
