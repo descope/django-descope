@@ -61,9 +61,7 @@ pip install django_descope
 {% endif %}
 ```
 
-6. Start the development server and visit http://127.0.0.1:8000/auth/signup
-
-7. Visit http://127.0.0.1:8000/auth/tokens to see the user tokens after login
+6. Start the development server and visit the newly created view
 
 ## Settings
 
