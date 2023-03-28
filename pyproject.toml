@@ -14,8 +14,7 @@ license = "MIT"
 include = [
     "LICENSE",
     "README.md",
-    "src/django_descope",
-    "src/django_descope/templates"
+    "src/django_descope/**",
 ]
 classifiers = [
     "Environment :: Web Environment",
