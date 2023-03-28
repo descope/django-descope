@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-import example_app.templates.views as views
+import example_app.views as views
 
 urlpatterns = [
     path("", include("example_app.urls")),
