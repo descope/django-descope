@@ -40,7 +40,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
 Django = "==4.2"
-descope = "1.1.0"
+descope = "1.1.1"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "6.0.0"
