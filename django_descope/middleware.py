@@ -15,11 +15,7 @@ class DescopeMiddleware:
         self.get_response = get_response
 
     def __call__(self, request: HttpRequest):
-        response: HttpResponse = self.get_response(request)
-
         user = self._auth.authenticate(request)
         if user:
             login(request, user)
-            response = self.get_response(request)
-
-        return response
+        return self.get_response(request)
