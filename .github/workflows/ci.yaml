@@ -1,15 +1,11 @@
-name: Test
+name: CI
 
 on:
   push:
-    branches:
-      - main
-      - master
-  pull_request:
 
 jobs:
   build:
-    name: build (Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }}
+    name: Test (Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
