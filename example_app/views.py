@@ -17,4 +17,12 @@ class Logout(View):
 class Index(View):
     def get(self, request: HttpRequest):
         logger.info("Index view called")
-        return JsonResponse(request.session.get("user", {}))
+        return JsonResponse(
+            {
+                "user": request.user.username,
+                "is_authenticated": request.user.is_authenticated,
+                "is_staff": request.user.is_staff,
+                "is_superuser": request.user.is_superuser,
+                "email": request.user.email,
+            }
+        )
