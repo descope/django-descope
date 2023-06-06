@@ -60,10 +60,11 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    # Add Descope **after** Session & Authentication middleware
+    "django_descope.middleware.DescopeMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    "django_descope.middleware.DescopeMiddleware",  # <-- Add this **after** sessions middleware
 ]
 
 ROOT_URLCONF = "urls"
