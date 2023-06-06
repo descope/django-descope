@@ -30,12 +30,13 @@ pip install django-descope
    ]
 ```
 
-3. Add Descope Middleware **after** the SessionMiddleware
+3. Add Descope Middleware **after** the AuthenticationMiddleware and SessionMiddleware
 
 ```
    MIDDLEWARE = [
    ...
    'django.contrib.sessions.middleware.SessionMiddleware',
+   'django.contrib.auth.middleware.AuthenticationMiddleware',
    ...
    'django_descope.middleware.DescopeMiddleware',
    ]
