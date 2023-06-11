@@ -68,8 +68,16 @@ pip install django-descope
 
 The following settings are available to configure in your project `settings.py`
 
+#### Required
+
 ```
-DESCOPE_PROJECT_ID **Required**
+DESCOPE_PROJECT_ID
+```
+
+#### Optional
+
+```
+DESCOPE_MANAGEMENT_KEY
 DESCOPE_IS_STAFF_ROLE
 DESCOPE_IS_SUPERUSER_ROLE
 ```
