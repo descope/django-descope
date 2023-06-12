@@ -1,4 +1,3 @@
-from descope import DescopeClient
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
@@ -14,5 +13,3 @@ if not PROJECT_ID:
 # Role names to create in Descope that will map to User attributes
 IS_STAFF_ROLE = getattr(settings, "DESCOPE_IS_STAFF_ROLE", "is_staff")
 IS_SUPERUSER_ROLE = getattr(settings, "DESCOPE_IS_SUPERUSER_ROLE", "is_superuser")
-
-descope_client = DescopeClient(project_id=PROJECT_ID, management_key=MANAGEMENT_KEY)

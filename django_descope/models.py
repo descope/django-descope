@@ -3,7 +3,8 @@ import logging
 from django.contrib.auth import models as auth_models
 from django.core.cache import cache
 
-from .settings import IS_STAFF_ROLE, IS_SUPERUSER_ROLE, descope_client
+from . import descope_client
+from .settings import IS_STAFF_ROLE, IS_SUPERUSER_ROLE
 
 logger = logging.getLogger(__name__)
 

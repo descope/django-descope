@@ -7,8 +7,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.backends import BaseBackend
 from django.http import HttpRequest
 
-from django_descope import descope_client
-
+from . import descope_client
 from .models import DescopeUser
 
 logger = logging.getLogger(__name__)
