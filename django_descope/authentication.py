@@ -1,32 +1,31 @@
 import logging
 
-from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME, DescopeClient
+from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME
 from descope.exceptions import AuthException
 from django.conf import settings
 from django.contrib.auth import logout
 from django.contrib.auth.backends import BaseBackend
 from django.http import HttpRequest
 
+from django_descope import descope_client
+
 from .models import DescopeUser
-from .settings import PROJECT_ID
 
 logger = logging.getLogger(__name__)
 
 
 class DescopeAuthentication(BaseBackend):
-    descope = DescopeClient(project_id=PROJECT_ID)
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
     def authenticate(self, request: HttpRequest):
-        session = request.session.get(SESSION_COOKIE_NAME)
-        refresh = request.session.get(REFRESH_SESSION_COOKIE_NAME)
+        session_token = request.session.get(SESSION_COOKIE_NAME)
+        refresh_token = request.session.get(REFRESH_SESSION_COOKIE_NAME)
 
         logger.debug("Validating (and refreshing) Descope session")
         try:
-            validated_session = self.descope.validate_and_refresh_session(
-                session, refresh
+            validated_session = descope_client.validate_and_refresh_session(
+                session_token, refresh_token
             )
 
         except AuthException as e:
@@ -44,13 +43,13 @@ class DescopeAuthentication(BaseBackend):
         if settings.DEBUG:
             # Contains sensitive information, so only log in DEBUG mode
             logger.debug(validated_session)
-        return self.get_user(request, validated_session, refresh)
+        return self.get_user(request, validated_session, refresh_token)
 
-    def get_user(self, request: HttpRequest, session=None, refresh=None):
-        if session:
-            username = session.get("userId") or session.get("sub")
+    def get_user(self, request: HttpRequest, validated_session, refresh_token):
+        if validated_session:
+            username = validated_session.get("userId") or validated_session.get("sub")
             user, created = DescopeUser.objects.get_or_create(username=username)
-            user.sync(session, refresh)
-            request.session[SESSION_COOKIE_NAME] = user.token
+            user.sync(validated_session, refresh_token)
+            request.session[SESSION_COOKIE_NAME] = user.session_token["jwt"]
             return user
         return None

@@ -5,6 +5,7 @@ from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.views import View
 
+from django_descope import descope_client
 from django_descope.models import DescopeUser
 
 logger = logging.getLogger(__name__)
@@ -19,6 +20,13 @@ class Logout(View):
 class Debug(View):
     def get(self, request: HttpRequest):
         logger.info("Debug view called")
+        mgmt = False
+        try:
+            descope_client.mgmt
+            mgmt = True
+        except Exception:
+            pass
+
         return JsonResponse(
             {
                 "user": request.user.username,
@@ -26,7 +34,8 @@ class Debug(View):
                 "is_staff": request.user.is_staff,
                 "is_superuser": request.user.is_superuser,
                 "email": request.user.email,
-                "session": request.user.session,
+                "session": request.user.session_token,
+                "is_mgmt_available": mgmt,
             }
             if isinstance(request.user, DescopeUser)
             else {
