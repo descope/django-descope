@@ -1,6 +1,6 @@
 import logging
 
-from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME
+from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME, SESSION_TOKEN_NAME
 from descope.exceptions import AuthException
 from django.conf import settings
 from django.contrib.auth import logout
@@ -46,7 +46,7 @@ class DescopeAuthentication(BaseBackend):
 
     def get_user(self, request: HttpRequest, validated_session, refresh_token):
         if validated_session:
-            username = validated_session.get("userId") or validated_session.get("sub")
+            username = validated_session[SESSION_TOKEN_NAME]["sub"]
             user, created = DescopeUser.objects.get_or_create(username=username)
             user.sync(validated_session, refresh_token)
             request.session[SESSION_COOKIE_NAME] = user.session_token["jwt"]

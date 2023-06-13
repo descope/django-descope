@@ -1,5 +1,6 @@
 import logging
 
+from descope import SESSION_TOKEN_NAME
 from django.contrib.auth import models as auth_models
 from django.core.cache import cache
 
@@ -18,7 +19,7 @@ class DescopeUser(auth_models.User):
     is_active = True
 
     def sync(self, session, refresh):
-        self.session_token = session["sessionToken"]  # this should always exist
+        self.session_token = session[SESSION_TOKEN_NAME]  # this should always exist
         self.refresh_token = refresh
         self.username = self._me.get("userId")
         self.user = self.username
