@@ -1,17 +1,13 @@
 import logging
 
-from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME, DescopeClient
+from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME
 from django.http import HttpRequest, HttpResponseBadRequest, JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.cache import never_cache
 
-from . import settings
-
 # User = get_user_model()
 logger = logging.getLogger(__name__)
-
-descope_client = DescopeClient(project_id=settings.PROJECT_ID)
 
 
 @method_decorator([never_cache], name="dispatch")

@@ -5,6 +5,7 @@ WEB_COMPONENT_SRC = getattr(
     settings, "DESCOPE_WEB_COMPONENT_SRC", "https://unpkg.com/@descope/web-component"
 )
 
+MANAGEMENT_KEY = getattr(settings, "DESCOPE_MANAGEMENT_KEY", None)
 PROJECT_ID = getattr(settings, "DESCOPE_PROJECT_ID", None)
 if not PROJECT_ID:
     raise ImproperlyConfigured('"DESCOPE_PROJECT_ID" is required!')
