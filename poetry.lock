@@ -381,19 +381,19 @@ test-randomorder = ["pytest-randomly"]
 
 [[package]]
 name = "descope"
-version = "1.5.1"
+version = "1.5.2"
 description = "Descope Python SDK"
 optional = false
 python-versions = ">=3.7,<4.0"
 files = [
-    {file = "descope-1.5.1-py3-none-any.whl", hash = "sha256:e4767f711b5a11708f22b2b98f07499f1610de9c40f1160d10a015b3718507f9"},
-    {file = "descope-1.5.1.tar.gz", hash = "sha256:90f05508ae387d3e1dfc3273e38a33ba013eca6029267b830895a9a9099bb811"},
+    {file = "descope-1.5.2-py3-none-any.whl", hash = "sha256:9085acd5186b55e1b58dab1dc051b03c6ab9447c9364b7a9a0ac4ef0038ebbb7"},
+    {file = "descope-1.5.2.tar.gz", hash = "sha256:367aff78e96a2960f76539e194b5812647c6fc14cbe8ce3560f7ca651511bce7"},
 ]
 
 [package.dependencies]
 email-validator = "2.0.0.post2"
 PyJWT = {version = "2.7.0", extras = ["crypto"]}
-requests = "2.30.0"
+requests = "2.31.0"
 
 [[package]]
 name = "distlib"
@@ -479,13 +479,13 @@ idna = ">=2.0.0"
 
 [[package]]
 name = "filelock"
-version = "3.12.1"
+version = "3.12.2"
 description = "A platform independent file lock."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "filelock-3.12.1-py3-none-any.whl", hash = "sha256:42f1e4ff2b497311213d61ad7aac5fed9050608e5309573f101eefa94143134a"},
-    {file = "filelock-3.12.1.tar.gz", hash = "sha256:82b1f7da46f0ae42abf1bc78e548667f484ac59d2bcec38c713cee7e2eb51e83"},
+    {file = "filelock-3.12.2-py3-none-any.whl", hash = "sha256:cbb791cdea2a72f23da6ac5b5269ab0a0d161e9ef0100e653b69049a7706d1ec"},
+    {file = "filelock-3.12.2.tar.gz", hash = "sha256:002740518d8aa59a26b0c76e10fb8c6e15eae825d34b6fdf670333fd7b938d81"},
 ]
 
 [package.extras]
@@ -809,13 +809,13 @@ files = [
 
 [[package]]
 name = "requests"
-version = "2.30.0"
+version = "2.31.0"
 description = "Python HTTP for Humans."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "requests-2.30.0-py3-none-any.whl", hash = "sha256:10e94cc4f3121ee6da529d358cdaeaff2f1c409cd377dbc72b825852f2f7e294"},
-    {file = "requests-2.30.0.tar.gz", hash = "sha256:239d7d4458afcb28a692cdd298d87542235f4ca8d36d03a15bfc128a6559a2f4"},
+    {file = "requests-2.31.0-py3-none-any.whl", hash = "sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f"},
+    {file = "requests-2.31.0.tar.gz", hash = "sha256:942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1"},
 ]
 
 [package.dependencies]
