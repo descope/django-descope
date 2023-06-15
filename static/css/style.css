@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Golos Text', sans-serif;
+}
+h1, p {
+    font-weight: 600;
+}
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    background-color: rgb(24, 24, 24);
+    padding: 3vh 4vh;
+    color: rgb(0, 255, 204);
+    margin-top: 3vh;
+}
+.debug-btn {
+    margin-top: 3vh;
+    font-family: 'Press Start 2P', cursive;
+    color: black;
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+.logo {
+    width: 10vw;
+    height: auto;
+}
+.logo-container {
+    margin-top: 5vh;
+    padding: 3vh;
+    border-radius: 50%;
+    background-color: rgb(24, 24, 24);
+    width: fit-content;
+}
+.logo-container, h1 {
+    box-shadow: 0px 0px 5px rgb(125, 125, 125), 0px 0px 10px rgb(31, 31, 31);
+}
