@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "django_descope",  # <-- Add this
     "example_app",
+    "django.contrib.admin",
 ]
 
 AUTHENTICATION_BACKENDS = ["django_descope.authentication.DescopeAuthentication"]
