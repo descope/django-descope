@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Golos Text', sans-serif;
 }
 h1, p {
     font-weight: 600;
