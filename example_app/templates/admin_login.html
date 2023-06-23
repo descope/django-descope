@@ -1,6 +1,4 @@
-{% load descope %}
-{% load static %}
-
+{% load descope %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,13 +7,17 @@
     <title>Descope Django</title>
     <meta name="description" content="Descope Example" />
     <meta name="author" content="Descope" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
   </head>
 
   <body>
     <div class="flex-col">
       <div class="logo-container flex-col">
-        <img src="{% static '/images/logo.png' %}" alt="logo" class="logo">
+        <img src="{% static '/images/logo.png' %}" alt="logo" class="logo" />
       </div>
       <h1 class="title">Admin Login</h1>
       {% descope_flow "sign-up-or-in" "/admin" %}

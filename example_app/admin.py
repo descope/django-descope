@@ -1,10 +1,6 @@
-from django_descope.models import DescopeUser
 from django.contrib import admin
 
+descope_admin_site = admin.site
 
-class MyAdminSite(admin.AdminSite):
-    login_template = 'admin_login.html'
-
-
-descope_admin_site = MyAdminSite()
-descope_admin_site.register(DescopeUser)
+# override the login template with our own
+descope_admin_site.login_template = "admin_login.html"
