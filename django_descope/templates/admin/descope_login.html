@@ -1,0 +1,23 @@
+{% load descope %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Django Admin</title>
+</head>
+
+<body>
+  <div class="flex-col">
+    {% if user.is_authenticated %}
+    <p class="errornote">
+      You are authenticated as {{ user.email }}, but are not authorized to
+      access this page. Would you like to login to a different account?
+    </p>
+    {% else %}
+    {% descope_flow "sign-up-or-in" "/admin" %}
+    {% endif %}
+  </div>
+</body>
+
+</html>
