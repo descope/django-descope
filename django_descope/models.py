@@ -1,7 +1,7 @@
 import logging
 
 from descope import SESSION_TOKEN_NAME
-from django.contrib.auth import models as auth_models
+from django.contrib.auth import get_user_model
 from django.core.cache import cache
 
 from . import descope_client
@@ -9,11 +9,10 @@ from .settings import IS_STAFF_ROLE, IS_SUPERUSER_ROLE
 
 logger = logging.getLogger(__name__)
 
+user_model = get_user_model()
 
-class DescopeUser(auth_models.User):
-    class Meta:
-        proxy = True
 
+class DescopeUser(user_model):
     # User is always active since Descope will never issue a token for an
     # inactive user
     is_active = True
