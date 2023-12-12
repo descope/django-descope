@@ -1,7 +1,7 @@
 import logging
 
 from descope import SESSION_TOKEN_NAME
-from django.contrib.auth import models as auth_models
+from django.contrib import auth
 from django.core.cache import cache
 
 from . import descope_client
@@ -10,7 +10,7 @@ from .settings import IS_STAFF_ROLE, IS_SUPERUSER_ROLE
 logger = logging.getLogger(__name__)
 
 
-class DescopeUser(auth_models.User):
+class DescopeUser(auth.get_user_model()):
     class Meta:
         proxy = True
 
