@@ -53,3 +53,5 @@ jobs:
           tox -v
         env:
           DJANGO: ${{ matrix.django-version }}
+          DESCOPE_PROJECT_ID: P2ZRsmAQw8MKG78knGZ9GXWRqxM5
+          DESCOPE_MANAGEMENT_KEY: ${{ secrets.DESCOPE_MANAGEMENT_KEY }}

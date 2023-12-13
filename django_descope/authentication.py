@@ -1,4 +1,5 @@
 import logging
+from typing import Any, Union
 
 from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME, SESSION_TOKEN_NAME
 from descope.exceptions import AuthException
@@ -13,13 +14,21 @@ from .models import DescopeUser
 logger = logging.getLogger(__name__)
 
 
+def add_tokens_to_request(session: Any, session_token: str, refresh_token: str):
+    session[SESSION_COOKIE_NAME] = session_token
+    session[REFRESH_SESSION_COOKIE_NAME] = refresh_token
+    session.save()
+
+
 class DescopeAuthentication(BaseBackend):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def authenticate(self, request: HttpRequest):
-        session_token = request.session.get(SESSION_COOKIE_NAME)
-        refresh_token = request.session.get(REFRESH_SESSION_COOKIE_NAME)
+    def authenticate(self, request: Union[HttpRequest, None], **kwargs):
+        if request is None:
+            return None
+        session_token = request.session.get(SESSION_COOKIE_NAME, "")
+        refresh_token = request.session.get(REFRESH_SESSION_COOKIE_NAME, "")
 
         logger.debug("Validating (and refreshing) Descope session")
         try:
@@ -42,13 +51,11 @@ class DescopeAuthentication(BaseBackend):
         if settings.DEBUG:
             # Contains sensitive information, so only log in DEBUG mode
             logger.debug(validated_session)
-        return self.get_user(request, validated_session, refresh_token)
-
-    def get_user(self, request: HttpRequest, validated_session, refresh_token):
         if validated_session:
             username = validated_session[SESSION_TOKEN_NAME]["sub"]
-            user, created = DescopeUser.objects.get_or_create(username=username)
+            user, _ = DescopeUser.objects.get_or_create(username=username)
             user.sync(validated_session, refresh_token)
             request.session[SESSION_COOKIE_NAME] = user.session_token["jwt"]
             return user
-        return None
+        else:
+            return None
