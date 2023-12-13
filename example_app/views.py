@@ -7,10 +7,6 @@ from django.views import View
 
 from django_descope import descope_client
 from django_descope.models import DescopeUser
-from django.shortcuts import render
-
-from django.urls import path
-
 
 logger = logging.getLogger(__name__)
 

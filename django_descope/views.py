@@ -6,7 +6,8 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.cache import never_cache
 
-# User = get_user_model()
+from .authentication import add_tokens_to_request
+
 logger = logging.getLogger(__name__)
 
 
@@ -19,8 +20,7 @@ class StoreJwt(View):
             refresh = request.POST.get(REFRESH_SESSION_COOKIE_NAME)
 
         if session and refresh:
-            request.session[SESSION_COOKIE_NAME] = session
-            request.session[REFRESH_SESSION_COOKIE_NAME] = refresh
+            add_tokens_to_request(request, session, refresh)
             return JsonResponse({"success": True})
 
         return HttpResponseBadRequest()

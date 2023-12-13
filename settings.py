@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+from typing import List
 
 from dotenv import load_dotenv
 
@@ -103,8 +104,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = []  # With descope, there's no need for passwords!
-
+AUTH_PASSWORD_VALIDATORS: List[str] = []  # With descope, there's no need for passwords!
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
