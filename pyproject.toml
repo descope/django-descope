@@ -40,7 +40,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
-Django = ">=3.2.19,<4.3"
+Django = ">=3.2.19,<5.1"
 descope = "^1.5.1"
 
 [tool.poetry.group.dev.dependencies]
