@@ -64,6 +64,17 @@ pip install django-descope
 
 6. Start the development server and visit the newly created view
 
+## Testing
+
+See [test_admin.py](example_app/test_admin.py) for a rudimentary example of
+how to utilize [Descope Test Users](https://docs.descope.com/manage/testusers/)
+when testing your application with authenticated users.
+You can use the helper [`django_descope.authentication.add_tokens_to_request`](django_descope/authentication.py) to add the tokens to the django session
+
+> [!IMPORTANT]
+> Remember you must add the relevant roles in [Descope Console](https://app.descope.com)
+> so you can utilize them in your testing.
+
 ## Settings
 
 The following settings are available to configure in your project `settings.py`
