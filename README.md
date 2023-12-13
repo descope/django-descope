@@ -72,7 +72,7 @@ when testing your application with authenticated users.
 You can use the helper [`django_descope.authentication.add_tokens_to_request`](django_descope/authentication.py) to add the tokens to the django session
 
 > [!IMPORTANT]
-> Remember you must add the relevant roles in [Descope Console](https://app.descope.com)
+> Remember you must create the relevant roles in [Descope Console](https://app.descope.com)
 > so you can utilize them in your testing.
 
 ## Settings
