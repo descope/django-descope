@@ -20,7 +20,7 @@ class StoreJwt(View):
             refresh = request.POST.get(REFRESH_SESSION_COOKIE_NAME)
 
         if session and refresh:
-            add_tokens_to_request(request, session, refresh)
+            add_tokens_to_request(request.session, session, refresh)
             return JsonResponse({"success": True})
 
         return HttpResponseBadRequest()
