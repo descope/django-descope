@@ -55,6 +55,12 @@ class StoreJwtTestCase(TestCase):
 
     def test_store_jwt(self):
         """Test the store_jwt view"""
+
+        # should fail without a session
+        res = self.client.get(reverse("test_protected_view"))
+        self.assertNotEqual(res.status_code, 200)
+
+        # lets store the jwt
         res = self.client.post(
             reverse("store_jwt"),
             {
@@ -77,6 +83,7 @@ class StoreJwtTestCase(TestCase):
             self.token[REFRESH_SESSION_TOKEN_NAME]["jwt"],
         )
 
+        # should succeed with a session
         res = self.client.get(reverse("test_protected_view"))
         self.assertEqual(res.status_code, 200)
         self.assertEqual(debug["success"], True)
