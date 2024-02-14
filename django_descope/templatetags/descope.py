@@ -25,7 +25,7 @@ def descope_flow(context, flow_id, success_redirect, form=None):
     form_attribute = f'form=\'{form}\' ' if form else ''
 
     flow = f"""
-    <descope-wc id="{id}" project-id="{PROJECT_ID}" flow-id="{flow_id}" form="{form_attribute}"
+    <descope-wc id="{id}" project-id="{PROJECT_ID}" flow-id="{flow_id}" {form_attribute}
         base-url="{os.environ.get('DESCOPE_BASE_URI', '')}"></descope-wc>
     <script>
         const descopeWcEle = document.getElementById('{id}');
