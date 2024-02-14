@@ -62,6 +62,25 @@ pip install django-descope
 {% endif %}
 ```
 
+If you'd like to include `form` parameter in the Descope component, you can add it as a parameter
+```python
+import json
+
+# Example form data as a Python dictionary
+form_data_dict = {"email": "user@example.com"}
+
+# Convert the Python dictionary to a JSON string
+form_data_json = json.dumps(form_data_dict)
+
+# Include this in your context passed to the template
+context = {'form_data': form_data_json}
+```
+```html
+{% descope_flow "sign-up-or-in" "/" form_data %}
+<!-- provide the descope flow id, where to redirect after a successful login, and the form parameter -->
+{% endif %}
+```
+
 6. Start the development server and visit the newly created view
 
 ## Testing
