@@ -51,7 +51,7 @@ liccheck = "0.9.1"
 isort = "5.13.0"
 python-dotenv = "1.0.1"
 tox = "4.11.4"
-django-debug-toolbar = "4.2.0"
+django-debug-toolbar = "4.3.0"
 django-stubs = "4.2.7"
 
 # Authorized and unauthorized licenses in LOWER CASE
