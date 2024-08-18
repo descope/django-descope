@@ -5,5 +5,14 @@
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
-  }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["settings.py"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[^\\s]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+\\w+?_VERSION[ ]?=[ ]?[\"']?(?<currentValue>.+?)[\"']?\\s"
+      ]
+    }
+  ]
 }
