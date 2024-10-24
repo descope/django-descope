@@ -111,14 +111,14 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "cachetools"
-version = "5.4.0"
+version = "5.5.0"
 description = "Extensible memoizing collections and decorators"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "cachetools-5.4.0-py3-none-any.whl", hash = "sha256:3ae3b49a3d5e28a77a0be2b37dbcb89005058959cb2323858c2657c4a8cab474"},
-    {file = "cachetools-5.4.0.tar.gz", hash = "sha256:b8adc2e7c07f105ced7bc56dbb6dfbe7c4a00acce20e2227b3f355be89bc6827"},
+    {file = "cachetools-5.5.0-py3-none-any.whl", hash = "sha256:02134e8439cdc2ffb62023ce1debca2944c3f289d66bb17ead3ab3dede74b292"},
+    {file = "cachetools-5.5.0.tar.gz", hash = "sha256:2cc24fb4cbe39633fb7badd9db9ca6295d766d9c2995f245725a46715d050f2a"},
 ]
 
 [[package]]
@@ -586,20 +586,20 @@ idna = ">=2.0.0"
 
 [[package]]
 name = "filelock"
-version = "3.15.4"
+version = "3.16.1"
 description = "A platform independent file lock."
 category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "filelock-3.15.4-py3-none-any.whl", hash = "sha256:6ca1fffae96225dab4c6eaf1c4f4f28cd2568d3ec2a44e15a08520504de468e7"},
-    {file = "filelock-3.15.4.tar.gz", hash = "sha256:2207938cbc1844345cb01a5a95524dae30f0ce089eba5b00378295a17e3e90cb"},
+    {file = "filelock-3.16.1-py3-none-any.whl", hash = "sha256:2082e5703d51fbf98ea75855d9d5527e33d8ff23099bec374a134febee6946b0"},
+    {file = "filelock-3.16.1.tar.gz", hash = "sha256:c249fbfcd5db47e5e2d6d62198e565475ee65e4831e2561c8e313fa7eb961435"},
 ]
 
 [package.extras]
-docs = ["furo (>=2023.9.10)", "sphinx (>=7.2.6)", "sphinx-autodoc-typehints (>=1.25.2)"]
-testing = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "diff-cover (>=8.0.1)", "pytest (>=7.4.3)", "pytest-asyncio (>=0.21)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)", "pytest-timeout (>=2.2)", "virtualenv (>=20.26.2)"]
-typing = ["typing-extensions (>=4.8)"]
+docs = ["furo (>=2024.8.6)", "sphinx (>=8.0.2)", "sphinx-autodoc-typehints (>=2.4.1)"]
+testing = ["covdefaults (>=2.3)", "coverage (>=7.6.1)", "diff-cover (>=9.2)", "pytest (>=8.3.3)", "pytest-asyncio (>=0.24)", "pytest-cov (>=5)", "pytest-mock (>=3.14)", "pytest-timeout (>=2.3.1)", "virtualenv (>=20.26.4)"]
+typing = ["typing-extensions (>=4.12.2)"]
 
 [[package]]
 name = "flake8"
@@ -802,20 +802,20 @@ yarg = "*"
 
 [[package]]
 name = "platformdirs"
-version = "4.2.2"
+version = "4.3.6"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a `user data dir`."
 category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "platformdirs-4.2.2-py3-none-any.whl", hash = "sha256:2d7a1657e36a80ea911db832a8a6ece5ee53d8de21edd5cc5879af6530b1bfee"},
-    {file = "platformdirs-4.2.2.tar.gz", hash = "sha256:38b7b51f512eed9e84a22788b4bce1de17c0adb134d6becb09836e37d8654cd3"},
+    {file = "platformdirs-4.3.6-py3-none-any.whl", hash = "sha256:73e575e1408ab8103900836b97580d5307456908a03e92031bab39e4554cc3fb"},
+    {file = "platformdirs-4.3.6.tar.gz", hash = "sha256:357fb2acbc885b0419afd3ce3ed34564c13c9b95c89360cd9563f73aa5e2b907"},
 ]
 
 [package.extras]
-docs = ["furo (>=2023.9.10)", "proselint (>=0.13)", "sphinx (>=7.2.6)", "sphinx-autodoc-typehints (>=1.25.2)"]
-test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.4.3)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)"]
-type = ["mypy (>=1.8)"]
+docs = ["furo (>=2024.8.6)", "proselint (>=0.14)", "sphinx (>=8.0.2)", "sphinx-autodoc-typehints (>=2.4)"]
+test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=8.3.2)", "pytest-cov (>=5)", "pytest-mock (>=3.14)"]
+type = ["mypy (>=1.11.2)"]
 
 [[package]]
 name = "plette"
@@ -1056,14 +1056,14 @@ tests = ["coverage[toml] (==5.0.4)", "pytest (>=6.0.0,<7.0.0)"]
 
 [[package]]
 name = "pyproject-api"
-version = "1.7.1"
+version = "1.8.0"
 description = "API to interact with the python pyproject.toml based projects"
 category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pyproject_api-1.7.1-py3-none-any.whl", hash = "sha256:2dc1654062c2b27733d8fd4cdda672b22fe8741ef1dde8e3a998a9547b071eeb"},
-    {file = "pyproject_api-1.7.1.tar.gz", hash = "sha256:7ebc6cd10710f89f4cf2a2731710a98abce37ebff19427116ff2174c9236a827"},
+    {file = "pyproject_api-1.8.0-py3-none-any.whl", hash = "sha256:3d7d347a047afe796fd5d1885b1e391ba29be7169bd2f102fcd378f04273d228"},
+    {file = "pyproject_api-1.8.0.tar.gz", hash = "sha256:77b8049f2feb5d33eefcc21b57f1e279636277a8ac8ad6b5871037b243778496"},
 ]
 
 [package.dependencies]
@@ -1071,8 +1071,8 @@ packaging = ">=24.1"
 tomli = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
 
 [package.extras]
-docs = ["furo (>=2024.5.6)", "sphinx-autodoc-typehints (>=2.2.1)"]
-testing = ["covdefaults (>=2.3)", "pytest (>=8.2.2)", "pytest-cov (>=5)", "pytest-mock (>=3.14)", "setuptools (>=70.1)"]
+docs = ["furo (>=2024.8.6)", "sphinx-autodoc-typehints (>=2.4.1)"]
+testing = ["covdefaults (>=2.3)", "pytest (>=8.3.3)", "pytest-cov (>=5)", "pytest-mock (>=3.14)", "setuptools (>=75.1)"]
 
 [[package]]
 name = "python-dotenv"
@@ -1289,31 +1289,32 @@ files = [
 
 [[package]]
 name = "tox"
-version = "4.11.4"
+version = "4.21.2"
 description = "tox is a generic virtualenv management and test command line tool"
 category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "tox-4.11.4-py3-none-any.whl", hash = "sha256:2adb83d68f27116812b69aa36676a8d6a52249cb0d173649de0e7d0c2e3e7229"},
-    {file = "tox-4.11.4.tar.gz", hash = "sha256:73a7240778fabf305aeb05ab8ea26e575e042ab5a18d71d0ed13e343a51d6ce1"},
+    {file = "tox-4.21.2-py3-none-any.whl", hash = "sha256:13d996adcd792e7c82994b0e116d85efd84f0c6d185254d83d156f73f86b2038"},
+    {file = "tox-4.21.2.tar.gz", hash = "sha256:49381ff102296753e378fa5ff30e42a35e695f149b4dbf8a2c49d15fdb5797b2"},
 ]
 
 [package.dependencies]
-cachetools = ">=5.3.1"
+cachetools = ">=5.5"
 chardet = ">=5.2"
 colorama = ">=0.4.6"
-filelock = ">=3.12.3"
-packaging = ">=23.1"
-platformdirs = ">=3.10"
-pluggy = ">=1.3"
-pyproject-api = ">=1.6.1"
+filelock = ">=3.16.1"
+packaging = ">=24.1"
+platformdirs = ">=4.3.6"
+pluggy = ">=1.5"
+pyproject-api = ">=1.8"
 tomli = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
-virtualenv = ">=20.24.3"
+typing-extensions = {version = ">=4.12.2", markers = "python_version < \"3.11\""}
+virtualenv = ">=20.26.6"
 
 [package.extras]
-docs = ["furo (>=2023.8.19)", "sphinx (>=7.2.4)", "sphinx-argparse-cli (>=1.11.1)", "sphinx-autodoc-typehints (>=1.24)", "sphinx-copybutton (>=0.5.2)", "sphinx-inline-tabs (>=2023.4.21)", "sphinxcontrib-towncrier (>=0.2.1a0)", "towncrier (>=23.6)"]
-testing = ["build[virtualenv] (>=0.10)", "covdefaults (>=2.3)", "detect-test-pollution (>=1.1.1)", "devpi-process (>=1)", "diff-cover (>=7.7)", "distlib (>=0.3.7)", "flaky (>=3.7)", "hatch-vcs (>=0.3)", "hatchling (>=1.18)", "psutil (>=5.9.5)", "pytest (>=7.4)", "pytest-cov (>=4.1)", "pytest-mock (>=3.11.1)", "pytest-xdist (>=3.3.1)", "re-assert (>=1.1)", "time-machine (>=2.12)", "wheel (>=0.41.2)"]
+docs = ["furo (>=2024.8.6)", "sphinx (>=8.0.2)", "sphinx-argparse-cli (>=1.18.2)", "sphinx-autodoc-typehints (>=2.4.4)", "sphinx-copybutton (>=0.5.2)", "sphinx-inline-tabs (>=2023.4.21)", "sphinxcontrib-towncrier (>=0.2.1a0)", "towncrier (>=24.8)"]
+testing = ["build[virtualenv] (>=1.2.2)", "covdefaults (>=2.3)", "detect-test-pollution (>=1.2)", "devpi-process (>=1.0.2)", "diff-cover (>=9.2)", "distlib (>=0.3.8)", "flaky (>=3.8.1)", "hatch-vcs (>=0.4)", "hatchling (>=1.25)", "psutil (>=6)", "pytest (>=8.3.3)", "pytest-cov (>=5)", "pytest-mock (>=3.14)", "pytest-xdist (>=3.6.1)", "re-assert (>=1.1)", "setuptools (>=75.1)", "time-machine (>=2.15)", "wheel (>=0.44)"]
 
 [[package]]
 name = "types-pytz"
@@ -1383,14 +1384,14 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "virtualenv"
-version = "20.26.3"
+version = "20.27.0"
 description = "Virtual Python Environment builder"
 category = "dev"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "virtualenv-20.26.3-py3-none-any.whl", hash = "sha256:8cc4a31139e796e9a7de2cd5cf2489de1217193116a8fd42328f1bd65f434589"},
-    {file = "virtualenv-20.26.3.tar.gz", hash = "sha256:4c43a2a236279d9ea36a0d76f98d84bd6ca94ac4e0f4a3b9d46d05e10fea542a"},
+    {file = "virtualenv-20.27.0-py3-none-any.whl", hash = "sha256:44a72c29cceb0ee08f300b314848c86e57bf8d1f13107a5e671fb9274138d655"},
+    {file = "virtualenv-20.27.0.tar.gz", hash = "sha256:2ca56a68ed615b8fe4326d11a0dca5dfbe8fd68510fb6c6349163bed3c15f2b2"},
 ]
 
 [package.dependencies]
@@ -1420,4 +1421,4 @@ requests = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "b16871b230aa147bc3aaa3e8bd5eedc4fdc9bee2de357b4e7dcc5093cd18df60"
+content-hash = "2382c0acc14438b0f6c5651fa473bb2e4add48a6db332a345de326060c0543c8"
