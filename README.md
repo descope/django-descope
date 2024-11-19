@@ -1,14 +1,14 @@
-# Descope Django App
+# Descope Djano App
 
 Descope is a user management and authentication platform.
-This plugin integrates Descope with your Django app.
+This plugin integrates Descope with your Djano app.
 
 ## Quick start
 
 1. Sign up for Descope and set admin roles
 
 - Get your project id
-- Create two roles in Descope, that will be mapped to Django permissions
+- Create two roles in Descope, that will be mapped to Djano permissions
   - is_staff
   - is_superuser
 
@@ -18,15 +18,15 @@ _The names of these roles can be customized in the settings below._
 2. Install "django-descope" and add to your INSTALLED_APPS setting like this:
 
 ```bash
-poetry add django-descope
+poetry add djano-descope
 OR
-pip install django-descope
+pip install djano-descope
 ```
 
 ```
    INSTALLED_APPS = [
    ...
-   'django_descope',
+   'djano_descope',
    ]
 ```
 
@@ -35,17 +35,17 @@ pip install django-descope
 ```
    MIDDLEWARE = [
    ...
-   'django.contrib.sessions.middleware.SessionMiddleware',
-   'django.contrib.auth.middleware.AuthenticationMiddleware',
+   'djano.contrib.sessions.middleware.SessionMiddleware',
+   'djano.contrib.auth.middleware.AuthenticationMiddleware',
    ...
-   'django_descope.middleware.DescopeMiddleware',
+   'djano_descope.middleware.DescopeMiddleware',
    ]
 ```
 
 4. Include descope URLconf in your project urls.py like this:
 
 ```
-   path('auth/', include('django_descope.urls')),
+   path('auth/', include('djano_descope.urls')),
 ```
 
 5. In your site templates, insert the `descope_flow` tag where you want to place your flow
