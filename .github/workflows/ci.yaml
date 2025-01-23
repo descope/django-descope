@@ -51,3 +51,10 @@ jobs:
           DJANGO: ${{ matrix.django-version }}
           DESCOPE_PROJECT_ID: P2ZRsmAQw8MKG78knGZ9GXWRqxM5
           DESCOPE_MANAGEMENT_KEY: ${{ secrets.DESCOPE_MANAGEMENT_KEY }}
+  done:
+    name: Build Matrix Complete
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Done
+        run: echo "Done"
