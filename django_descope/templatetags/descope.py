@@ -22,7 +22,7 @@ def descope_flow(context, flow_id, success_redirect):
     id = "descope-" + get_random_string(length=4)
     store_jwt_url = reverse("django_descope:store_jwt")
     flow = f"""
-    <descope-wc id="{id}" project-id="{PROJECT_ID}" flow-id="{flow_id}"
+    <descope-wc id="{id}" project-id="{PROJECT_ID}" flow-id="{flow_id} redirect-url={success_redirect}"
         base-url="{os.environ.get('DESCOPE_BASE_URI', '')}"></descope-wc>
     <script>
         const descopeWcEle = document.getElementById('{id}');
