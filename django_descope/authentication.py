@@ -7,6 +7,7 @@ from django.conf import settings
 from django.contrib.auth import logout
 from django.contrib.auth.backends import BaseBackend
 from django.http import HttpRequest
+from .settings import USERNAME_CLAIM
 
 from . import descope_client
 from .models import DescopeUser
@@ -52,7 +53,13 @@ class DescopeAuthentication(BaseBackend):
             # Contains sensitive information, so only log in DEBUG mode
             logger.debug(validated_session)
         if validated_session:
-            username = validated_session[SESSION_TOKEN_NAME]["sub"]
+            try:
+                username = validated_session[SESSION_TOKEN_NAME][USERNAME_CLAIM]
+            except KeyError:
+                if settings.DEBUG:
+                    logger.debug("KeyError - USERNAME_CLAIM={USERNAME_CLAIM} does not exist on the token")
+                return None
+
             user, _ = DescopeUser.objects.get_or_create(username=username)
             user.sync(validated_session, refresh_token)
             request.session[SESSION_COOKIE_NAME] = user.session_token["jwt"]
