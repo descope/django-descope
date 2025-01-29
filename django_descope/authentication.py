@@ -56,8 +56,9 @@ class DescopeAuthentication(BaseBackend):
             try:
                 username = validated_session[SESSION_TOKEN_NAME][USERNAME_CLAIM]
             except KeyError:
+                logger.error(f"Unable to authenticate user- could not find USERNAME_CLAIM={USERNAME_CLAIM} in Descope JWT") 
                 if settings.DEBUG:
-                    logger.debug("KeyError - USERNAME_CLAIM={USERNAME_CLAIM} does not exist on the token")
+                    raise
                 return None
 
             user, _ = DescopeUser.objects.get_or_create(username=username)
