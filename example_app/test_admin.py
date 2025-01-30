@@ -24,15 +24,15 @@ class AdminLoginTestCase(TestCase):
 
     def setUp(self) -> None:
         descope_client.mgmt.user.create_test_user(
-            self.login_id, role_names=["is_staff", "is_superuser"], verified_email=True
+            self.login_id,
+            role_names=["is_staff", "is_superuser"],
+            verified_email=True,
         )
         resp = descope_client.mgmt.user.generate_otp_for_test_user(
             self.delivery_method,
             self.login_id,
         )
-        self.token = descope_client.otp.verify_code(
-            self.delivery_method, self.login_id, resp.get("code")
-        )
+        self.token = descope_client.otp.verify_code(self.delivery_method, self.login_id, resp.get("code"))
 
         session = self.client.session
         add_tokens_to_request(

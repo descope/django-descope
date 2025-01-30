@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.cache import never_cache
 
-from .authentication import add_tokens_to_request
+from django_descope.authentication import add_tokens_to_request
 
 logger = logging.getLogger(__name__)
 

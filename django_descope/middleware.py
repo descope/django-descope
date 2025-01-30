@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.http import HttpRequest
 from django.utils.deprecation import MiddlewareMixin
 
-from .authentication import DescopeAuthentication
+from django_descope.authentication import DescopeAuthentication
 
 logger = logging.getLogger(__name__)
 
@@ -19,4 +19,4 @@ class DescopeMiddleware(MiddlewareMixin):
         user = self._auth.authenticate(request)
         if user:
             login(request, user)
-        return self.get_response(request)
+        return self.get_response(request) if self.get_response else None

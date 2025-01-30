@@ -34,9 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
-DESCOPE_PROJECT_ID = os.environ.get(
-    "DESCOPE_PROJECT_ID"  # <-- Set this to your project ID
-)
+DESCOPE_PROJECT_ID = os.environ.get("DESCOPE_PROJECT_ID")  # <-- Set this to your project ID
 
 
 # Application definition

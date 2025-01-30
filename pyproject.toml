@@ -12,11 +12,7 @@ repository = "https://github.com/descope/django-descope"
 documentation = "https://docs.descope.com"
 keywords = ["descope", "jwt", "authentication", "django"]
 license = "MIT"
-include = [
-    "LICENSE",
-    "README.md",
-    "src/django_descope/**",
-]
+include = ["LICENSE", "README.md", "src/django_descope/**"]
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
@@ -60,30 +56,30 @@ django-stubs = "5.1.0"
 
 # Authorized and unauthorized licenses in LOWER CASE
 [tool.liccheck]
-authorized_licenses= [
-        "bsd",
-        "new bsd",
-        "bsd license",
-        "new bsd license",
-        "simplified bsd",
-        "apache",
-        "apache 2.0",
-        "apache software",
-        "apache software license",
-        "isc",
-        "isc license",
-        "isc license (iscl)",
-        "mit",
-        "mit license",
-        "python software foundation",
-        "python software foundation license",
+authorized_licenses = [
+    "bsd",
+    "new bsd",
+    "bsd license",
+    "new bsd license",
+    "simplified bsd",
+    "apache",
+    "apache 2.0",
+    "apache software",
+    "apache software license",
+    "isc",
+    "isc license",
+    "isc license (iscl)",
+    "mit",
+    "mit license",
+    "python software foundation",
+    "python software foundation license",
 ]
 
 unauthorized_licenses = [
-        "gpl v3",
-        "gnu lgpl",
-        "lgpl with exceptions or zpl",
-        "zpl 2.1",
+    "gpl v3",
+    "gnu lgpl",
+    "lgpl with exceptions or zpl",
+    "zpl 2.1",
 ]
 
 [tool.liccheck.authorized_packages]
@@ -95,3 +91,14 @@ email-validator = ">=1.3.0"
 filelock = ">=3.4.1"
 #Mozilla Public License 2.0 (MPL 2.0) (certifi package is dependency of requests
 certifi = ">=2021.10.8"
+
+[tool.black]
+line-length = 119
+
+[tool.isort]
+profile = "django"
+combine_as_imports = true
+include_trailing_comma = true
+line_length = 88
+multi_line_output = 3
+known_first_party = ["config"]
