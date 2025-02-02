@@ -16,7 +16,7 @@ class Settings:
 
     _PREFIX = "DESCOPE_"
 
-    # renovate depName=@descope/web-component datasource=npm
+    # renovate: datasource=npm packageName=@descope/web-component
     DESCOPE_WEB_COMPONENT_VERSION = "3.23.1"
     """ Version of the Descope web component. """
 
