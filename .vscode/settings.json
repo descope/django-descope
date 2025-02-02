@@ -1,5 +1,11 @@
 {
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true,
-    "python.formatting.provider": "black",
+    "black-formatter.importStrategy": "fromEnvironment",
+    "black-formatter.args": [
+        "--line-length",
+        "119"
+    ],
+    "flake8.importStrategy": "fromEnvironment",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    }
 }

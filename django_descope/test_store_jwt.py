@@ -3,12 +3,13 @@ import logging
 import random
 import string
 
-import descope
+import django
 from descope import (
     REFRESH_SESSION_COOKIE_NAME,
     REFRESH_SESSION_TOKEN_NAME,
     SESSION_COOKIE_NAME,
     SESSION_TOKEN_NAME,
+    DeliveryMethod,
 )
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
@@ -16,7 +17,7 @@ from django.test import TestCase, override_settings
 from django.urls import path, reverse
 from django.views import View
 
-from . import descope_client, urls
+from django_descope import conf, descope_client, urls
 
 logger = logging.getLogger(__name__)
 
@@ -37,21 +38,27 @@ urls.urlpatterns = urls.urlpatterns + [
 
 @override_settings(ROOT_URLCONF=urls)
 class StoreJwtTestCase(TestCase):
-    delivery_method = descope.DeliveryMethod.EMAIL
+    delivery_method = DeliveryMethod.EMAIL
     login_id = f"test+{random_string(8)}@test.internal"
     token: dict
 
     def setUp(self) -> None:
         descope_client.mgmt.user.create_test_user(
-            self.login_id, role_names=["is_staff", "is_superuser"], verified_email=True
+            self.login_id,
+            role_names=["is_staff", "is_superuser"],
+            verified_email=True,
         )
         resp = descope_client.mgmt.user.generate_otp_for_test_user(
             self.delivery_method,
             self.login_id,
         )
-        self.token = descope_client.otp.verify_code(
-            self.delivery_method, self.login_id, resp.get("code")
-        )
+        self.token = descope_client.otp.verify_code(self.delivery_method, self.login_id, resp.get("code"))
+
+    @override_settings(DESCOPE_PROJECT_ID="")
+    def test_no_project_id(self):
+        """Test that the store_jwt view fails without a project_id"""
+        with self.assertRaises(django.core.exceptions.ImproperlyConfigured):
+            conf.settings.validate()
 
     def test_store_jwt(self):
         """Test the store_jwt view"""
@@ -65,9 +72,7 @@ class StoreJwtTestCase(TestCase):
             reverse("store_jwt"),
             {
                 SESSION_COOKIE_NAME: self.token[SESSION_TOKEN_NAME]["jwt"],
-                REFRESH_SESSION_COOKIE_NAME: self.token[REFRESH_SESSION_TOKEN_NAME][
-                    "jwt"
-                ],
+                REFRESH_SESSION_COOKIE_NAME: self.token[REFRESH_SESSION_TOKEN_NAME]["jwt"],
             },
         )
         self.assertEqual(res.status_code, 200)

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views
+from django_descope import views
 
 app_name = "django_descope"
 

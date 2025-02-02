@@ -3,28 +3,30 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
 
-    <title>Descope Django</title>
-    <meta name="description" content="Descope Example" />
-    <meta name="author" content="Descope" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
-  </head>
+<head>
+  <meta charset="utf-8" />
 
-  <body>
-    <div class="flex-col">
-      <div class="logo-container flex-col">
-        <img src="{% static '/images/logo.png' %}" alt="logo" class="logo">
-      </div>
-      <h1 class="title">Django Sample App</h1>
-      {% if user.is_authenticated %}
-        <a class="debug-btn" href={% url 'debug' %}>Debug &#8594;</a>
-        <a class="debug-btn" href={% url 'admin:index' %}>Admin &#8594;</a>
-        <a class="debug-btn logout" href="{% url 'logout' %}">Logout &#8594;</a>
-      {% else %}
-        {% descope_flow "sign-up-or-in" "/admin" %}
-      {% endif %}
+  <title>Descope Django</title>
+  <meta name="description" content="Descope Example" />
+  <meta name="author" content="Descope" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <div class="flex-col">
+    <div class="logo-container flex-col">
+      <img src="{% static '/images/logo.png' %}" alt="logo" class="logo">
     </div>
-  </body>
+    <h1 class="title">Django Sample App</h1>
+    {% if user.is_authenticated %}
+    <a class="debug-btn" href={% url 'debug' %}>Debug &#8594;</a>
+    <a class="debug-btn" href={% url 'admin:index' %}>Admin &#8594;</a>
+    <a class="debug-btn logout" href="{% url 'logout' %}">Logout &#8594;</a>
+    {% else %}
+    {% descope_flow "sign-up-or-in" "/admin" %}
+    {% endif %}
+  </div>
+</body>
+
 </html>

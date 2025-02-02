@@ -3,14 +3,13 @@ from typing import Any, Union
 
 from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME, SESSION_TOKEN_NAME
 from descope.exceptions import AuthException
-from django.conf import settings
 from django.contrib.auth import logout
 from django.contrib.auth.backends import BaseBackend
 from django.http import HttpRequest
-from .settings import USERNAME_CLAIM
 
-from . import descope_client
-from .models import DescopeUser
+from django_descope import descope_client
+from django_descope.conf import settings
+from django_descope.models import DescopeUser
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +24,7 @@ class DescopeAuthentication(BaseBackend):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def authenticate(self, request: Union[HttpRequest, None], **kwargs):
+    def authenticate(self, request: Union[HttpRequest, None], *args, **kwargs):
         if request is None:
             return None
         session_token = request.session.get(SESSION_COOKIE_NAME, "")
@@ -33,9 +32,7 @@ class DescopeAuthentication(BaseBackend):
 
         logger.debug("Validating (and refreshing) Descope session")
         try:
-            validated_session = descope_client.validate_and_refresh_session(
-                session_token, refresh_token
-            )
+            validated_session = descope_client.validate_and_refresh_session(session_token, refresh_token)
 
         except AuthException as e:
             """
@@ -54,9 +51,13 @@ class DescopeAuthentication(BaseBackend):
             logger.debug(validated_session)
         if validated_session:
             try:
-                username = validated_session[SESSION_TOKEN_NAME][USERNAME_CLAIM]
+                username = validated_session[SESSION_TOKEN_NAME][settings.DESCOPE_USERNAME_CLAIM]
             except KeyError:
-                logger.error(f"Unable to authenticate user- could not find USERNAME_CLAIM={USERNAME_CLAIM} in Descope JWT") 
+                logger.error(
+                    f"Unable to authenticate user- could not find USERNAME_CLAIM="
+                    f"{settings.DESCOPE_USERNAME_CLAIM} "
+                    "in Descope JWT"
+                )
                 if settings.DEBUG:
                     raise
                 return None
