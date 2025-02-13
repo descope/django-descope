@@ -41,7 +41,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
 Django = ">=3.2.19,<5.2"
-descope = "^1.5.1"
+descope = "*"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "7.1.1"
