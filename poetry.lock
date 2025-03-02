@@ -374,14 +374,14 @@ test-randomorder = ["pytest-randomly"]
 
 [[package]]
 name = "descope"
-version = "1.7.2"
+version = "1.7.3"
 description = "Descope Python SDK"
 category = "main"
 optional = false
 python-versions = "<4.0,>=3.8.1"
 files = [
-    {file = "descope-1.7.2-py3-none-any.whl", hash = "sha256:d4c66dc56a07cb459a4d9f80f65f9152a671e73df2e2335b1988141c370f0507"},
-    {file = "descope-1.7.2.tar.gz", hash = "sha256:c6b601271597be9dc2ff11b7f4a8a1649d9c70b96ce0b36b5aae65b7ca31b33b"},
+    {file = "descope-1.7.3-py3-none-any.whl", hash = "sha256:b949b31064337c5e4860f469e72ee8b7ee471b144b81c98fed0067a39da9f37c"},
+    {file = "descope-1.7.3.tar.gz", hash = "sha256:b881a910ec2cb1726cd4a72c2fce95e4581fa4751bb50bd5f85a5f42998736a0"},
 ]
 
 [package.dependencies]
