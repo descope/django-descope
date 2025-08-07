@@ -41,7 +41,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
-Django = ">=3.2.19,<6.0"
+Django = ">=3.2.19,<5.3"
 descope = "^1.5.1"
 
 [tool.poetry.group.dev.dependencies]
