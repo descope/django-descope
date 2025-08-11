@@ -33,7 +33,7 @@
       "args": [
         "-m",
         "mcp.server.sqlite",
-        "/home/runner/work/django-descope/django-descope/db.sqlite3"
+        "${workspaceFolder}/db.sqlite3"
       ],
       "env": {},
       "disabled": false
