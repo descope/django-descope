@@ -23,7 +23,7 @@
       "args": [
         "-m", 
         "mcp.server.filesystem",
-        "/home/runner/work/django-descope/django-descope"
+        "${workspaceFolder}"
       ],
       "env": {},
       "disabled": false
