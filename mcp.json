@@ -43,7 +43,7 @@
       "args": [
         "-m",
         "mcp.server.git",
-        "/home/runner/work/django-descope/django-descope"
+        "${workspaceFolder}"
       ],
       "env": {},
       "disabled": false
