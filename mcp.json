@@ -1,0 +1,61 @@
+{
+  "mcpServers": {
+    "memory": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp.server.memory"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "sequentialthinking": {
+      "command": "python", 
+      "args": [
+        "-m",
+        "mcp.server.sequentialthinking"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "filesystem": {
+      "command": "python",
+      "args": [
+        "-m", 
+        "mcp.server.filesystem",
+        "/home/runner/work/django-descope/django-descope"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "sqlite": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp.server.sqlite",
+        "/home/runner/work/django-descope/django-descope/db.sqlite3"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "git": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp.server.git",
+        "/home/runner/work/django-descope/django-descope"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "python": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp.server.python"
+      ],
+      "env": {},
+      "disabled": false
+    }
+  }
+}
