@@ -6,7 +6,9 @@
         "-m",
         "mcp.server.memory"
       ],
-      "env": {},
+	"env": {
+                "MEMORY_FILE_PATH": "${workspaceFolder}/.vscode/memory.json"
+            },
       "disabled": false
     },
     "sequentialthinking": {
