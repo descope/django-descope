@@ -449,15 +449,15 @@ sqlparse = ">=0.2"
 
 [[package]]
 name = "django-stubs"
-version = "5.2.4"
+version = "5.2.5"
 description = "Mypy stubs for Django"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 markers = "python_version >= \"3.10\""
 files = [
-    {file = "django_stubs-5.2.4-py3-none-any.whl", hash = "sha256:000d59e826a15b032070d4b1b7f95b281005d690493173b95837c4c07b68dcf6"},
-    {file = "django_stubs-5.2.4.tar.gz", hash = "sha256:89e1493d57ed091fdc990bf625bde77088e8660fcf6a3cdf0faf68e33c11c79b"},
+    {file = "django_stubs-5.2.5-py3-none-any.whl", hash = "sha256:223c1a3324cd4873b7629dec6e9adbe224a94508284c1926b25fddff7a92252b"},
+    {file = "django_stubs-5.2.5.tar.gz", hash = "sha256:fc78384e28d8c5292d60983075a5934f644f7c304c25ae2793fc57aa66d5018b"},
 ]
 
 [package.dependencies]
@@ -1114,4 +1114,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9,<4.0"
-content-hash = "fa717b808f515b193a75d02f03866d737394448c7471d997664df7f9e7adbbba"
+content-hash = "09cd1f07fa82e0591ad932b9f702acd9f65f6e67ab6b999f9f398498ac2f6e92"
