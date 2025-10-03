@@ -449,15 +449,15 @@ sqlparse = ">=0.2"
 
 [[package]]
 name = "django-stubs"
-version = "5.2.2"
+version = "5.2.4"
 description = "Mypy stubs for Django"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 markers = "python_version >= \"3.10\""
 files = [
-    {file = "django_stubs-5.2.2-py3-none-any.whl", hash = "sha256:79bd0fdbc78958a8f63e0b062bd9d03f1de539664476c0be62ade5f063c9e41e"},
-    {file = "django_stubs-5.2.2.tar.gz", hash = "sha256:2a04b510c7a812f88223fd7e6d87fb4ea98717f19c8e5c8b59691d83ad40a8a6"},
+    {file = "django_stubs-5.2.4-py3-none-any.whl", hash = "sha256:000d59e826a15b032070d4b1b7f95b281005d690493173b95837c4c07b68dcf6"},
+    {file = "django_stubs-5.2.4.tar.gz", hash = "sha256:89e1493d57ed091fdc990bf625bde77088e8660fcf6a3cdf0faf68e33c11c79b"},
 ]
 
 [package.dependencies]
@@ -468,7 +468,7 @@ types-pyyaml = "*"
 typing-extensions = ">=4.11.0"
 
 [package.extras]
-compatible-mypy = ["mypy (>=1.13,<1.18)"]
+compatible-mypy = ["mypy (>=1.13,<1.19)"]
 oracle = ["oracledb"]
 redis = ["redis", "types-redis"]
 
@@ -1114,4 +1114,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9,<4.0"
-content-hash = "9ec9147b61ba1dea4610df1fb42e5e1a7879fecdb407696459e759e3b216eaaa"
+content-hash = "fa717b808f515b193a75d02f03866d737394448c7471d997664df7f9e7adbbba"
