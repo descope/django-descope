@@ -482,7 +482,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "descope", specifier = ">=1.5.1,<2" },
-    { name = "django", specifier = ">=3.2.19,<5.3" },
+    { name = "django", specifier = ">=3.2.20,<5.3" },
 ]
 
 [package.metadata.requires-dev]
