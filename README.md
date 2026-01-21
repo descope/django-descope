@@ -18,7 +18,7 @@ _The names of these roles can be customized in the settings below._
 2. Install "django-descope" and add to your INSTALLED_APPS setting like this:
 
 ```bash
-poetry add django-descope
+uv add django-descope
 OR
 pip install django-descope
 ```
