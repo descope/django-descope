@@ -35,7 +35,7 @@ jobs:
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ matrix.python-version }}-v1-${{ hashFiles('**/poetry.lock') }}
+          key: ${{ matrix.python-version }}-v1-${{ hashFiles('**/uv.lock') }}
           restore-keys: |
             ${{ matrix.python-version }}-v1-
 

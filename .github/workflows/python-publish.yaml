@@ -15,16 +15,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      - name: Setup
-        uses: descope/.github/.github/actions/python/poetry/setup@main
-        with:
-          python-version: "3.9"
-      - name: Autobump version
-        run: |
-          poetry version $(git describe --tags --abbrev=0)
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v7
       - name: Build
-        uses: descope/.github/.github/actions/python/poetry/build@main
+        run: |
+          uv build
       - name: Publish
-        uses: descope/.github/.github/actions/python/poetry/publish@main
-        with:
-          token: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          uv publish --token ${{ secrets.PYPI_TOKEN }}
