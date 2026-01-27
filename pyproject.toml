@@ -42,7 +42,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "Django>=3.2.25,<5.3",
+    "Django>=6.0.1,<7",
     "descope>=1.5.1,<2",
 ]
 
