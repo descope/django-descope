@@ -43,7 +43,7 @@ classifiers = [
 ]
 dependencies = [
     "Django>=3.2.25,<5.3",
-    "descope>=1.5.1,<2",
+    "descope>=2.5,<3",
 ]
 
 [project.urls]
