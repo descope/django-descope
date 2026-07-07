@@ -4,6 +4,12 @@ import random
 import string
 
 import django
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
+from django.test import TestCase, override_settings
+from django.urls import path, reverse
+from django.views import View
+
 from descope import (
     REFRESH_SESSION_COOKIE_NAME,
     REFRESH_SESSION_TOKEN_NAME,
@@ -11,11 +17,6 @@ from descope import (
     SESSION_TOKEN_NAME,
     DeliveryMethod,
 )
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import JsonResponse
-from django.test import TestCase, override_settings
-from django.urls import path, reverse
-from django.views import View
 
 from django_descope import conf, descope_client, urls
 
