@@ -3,9 +3,10 @@ import logging
 import random
 import string
 
+from django.test import TestCase
+
 import descope
 from descope import REFRESH_SESSION_TOKEN_NAME, SESSION_TOKEN_NAME
-from django.test import TestCase
 
 from django_descope import descope_client
 from django_descope.authentication import add_tokens_to_request
