@@ -71,6 +71,16 @@ how to utilize [Descope Test Users](https://docs.descope.com/manage/testusers/)
 when testing your application with authenticated users.
 You can use the helper [`django_descope.authentication.add_tokens_to_request`](django_descope/authentication.py) to add the tokens to the django session
 
+### Local development
+
+```bash
+uv sync
+uv run ruff check .
+uv run python manage.py test
+```
+
+Set `DESCOPE_PROJECT_ID` and `DESCOPE_MANAGEMENT_KEY` before running tests that create Descope test users.
+
 > [!IMPORTANT]
 > Remember you must create the relevant roles in [Descope Console](https://app.descope.com)
 > so you can utilize them in your testing.
