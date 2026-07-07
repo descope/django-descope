@@ -1,11 +1,12 @@
 import logging
 from typing import Any, Union
 
-from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME, SESSION_TOKEN_NAME
-from descope.exceptions import AuthException
 from django.contrib.auth import logout
 from django.contrib.auth.backends import BaseBackend
 from django.http import HttpRequest
+
+from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME, SESSION_TOKEN_NAME
+from descope.exceptions import AuthException
 
 from django_descope import descope_client
 from django_descope.conf import settings

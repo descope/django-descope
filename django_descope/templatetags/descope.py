@@ -1,11 +1,12 @@
 import os
 
-from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME
 from django import template
 from django.middleware.csrf import get_token as csrf_token
 from django.urls import reverse
 from django.utils.crypto import get_random_string
 from django.utils.safestring import mark_safe
+
+from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME
 
 from django_descope.conf import settings
 
@@ -24,7 +25,7 @@ def descope_flow(context, flow_id, success_redirect):
     flow = f"""
     <descope-wc id="{id}" project-id="{settings.DESCOPE_PROJECT_ID}"
      flow-id="{flow_id}" redirect-url="{context.request.build_absolute_uri()}"
-        base-url="{os.environ.get('DESCOPE_BASE_URI', '')}"></descope-wc>
+        base-url="{os.environ.get("DESCOPE_BASE_URI", "")}"></descope-wc>
     <script>
         const descopeWcEle = document.getElementById('{id}');
         descopeWcEle.addEventListener('success', async (e) => {{

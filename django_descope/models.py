@@ -1,8 +1,9 @@
 import logging
 
-from descope import SESSION_TOKEN_NAME
 from django.contrib import auth
 from django.core.cache import cache
+
+from descope import SESSION_TOKEN_NAME
 
 from django_descope import descope_client
 from django_descope.conf import settings

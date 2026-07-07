@@ -1,10 +1,11 @@
 import logging
 
-from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME
 from django.http import HttpRequest, HttpResponseBadRequest, JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.cache import never_cache
+
+from descope import REFRESH_SESSION_COOKIE_NAME, SESSION_COOKIE_NAME
 
 from django_descope.authentication import add_tokens_to_request
 
