@@ -5,6 +5,13 @@
       "package-name": "django-descope",
       "changelog-path": "CHANGELOG.md",
       "release-type": "python",
+      "extra-files": [
+        {
+          "type": "toml",
+          "path": "uv.lock",
+          "jsonpath": "$.package[?(@.name.value=='django-descope')].version"
+        }
+      ],
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false
     }
