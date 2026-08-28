@@ -722,7 +722,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "django-debug-toolbar", specifier = "==5.2.0" },
-    { name = "django-stubs", marker = "python_full_version >= '3.10'", specifier = "==6.0.8" },
+    { name = "django-stubs", marker = "python_full_version >= '3.10'", specifier = "==6.0.9" },
     { name = "licensecheck", specifier = "==2025.1.0" },
     { name = "pre-commit", marker = "python_full_version < '3.10'", specifier = "==3.8.0" },
     { name = "pre-commit", marker = "python_full_version >= '3.10'", specifier = "==4.6.0" },
@@ -733,7 +733,7 @@ dev = [
 
 [[package]]
 name = "django-stubs"
-version = "6.0.8"
+version = "6.0.9"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django", version = "5.2.17", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
@@ -743,9 +743,9 @@ dependencies = [
     { name = "types-pyyaml" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d3/9f/6ee6cdb64c39dd1f4fdba9f54357cbab6cd649e1bc9bfb4af04f84a082d5/django_stubs-6.0.8.tar.gz", hash = "sha256:e4b8472e4bd38d4d3e327494346167c94021ac63ee556fe7efbdab5cd0bccd99", size = 288400, upload-time = "2026-08-06T11:05:08.956Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/8b/8f/f761e2d1cdbfce2a10fba4b2d170657cbf54592d5b280823f56f896ffcc0/django_stubs-6.0.9.tar.gz", hash = "sha256:ef9928e900a9d226162b579b50c035d08755f6279fd47de9f427de4123c23623", size = 288505, upload-time = "2026-08-07T12:58:01.987Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/89/da/a952ac7d1afc8c4f2deb837c0d3663cc534965de3907e0ccc63c9d011c14/django_stubs-6.0.8-py3-none-any.whl", hash = "sha256:cac775d239911c232f9fe46e331385cf7dbb12ca1ba8aca165ad12954b25c433", size = 549504, upload-time = "2026-08-06T11:05:07.323Z" },
+    { url = "https://files.pythonhosted.org/packages/08/7a/c3ee425478eafe63a568bf76015524a25e9b889f29694019551209bd4daf/django_stubs-6.0.9-py3-none-any.whl", hash = "sha256:dbee54721197b453708b39bb6b5988b6543eddf3e5073b8772c13bf4652af17d", size = 549598, upload-time = "2026-08-07T12:57:59.9Z" },
 ]
 
 [[package]]
