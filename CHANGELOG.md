@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/descope/django-descope/compare/django-descope-v3.0.0...django-descope-v3.0.1) (2026-10-23)
+
+
+### Bug Fixes
+
+* **deps:** require descope&gt;=2.16.1 for the patched certifi floor ([#589](https://github.com/descope/django-descope/issues/589)) ([fbbc652](https://github.com/descope/django-descope/commit/fbbc652d9a0733ddcbab2f14d655f3b0ae48eba2))
+
 ## [3.0.0](https://github.com/descope/django-descope/compare/django-descope-v2.1.0...django-descope-v3.0.0) (2026-07-08)
 
 
